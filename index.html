@@ -1,0 +1,620 @@
+﻿<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Amém</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.2.0.min.css" />
+	
+	
+	<link rel='stylesheet' href='css/style.css' />
+	
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.2.0.min.js"></script>
+	<script src="swipe.js"></script>
+
+<style>
+	
+	/* Swipe 2 required styles */
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+
+/* END required styles */
+
+#slider {
+  background:#414141;
+}
+.swipe-wrap > div > span {
+  display:block;
+  background:#1db1ff;
+  font-weight:bold;
+  color:#fff;
+  font-size:20px;
+  text-align:center;
+  margin:15px 14px 16px;
+  padding:100px 10px;
+  border-radius:3px;
+  text-shadow:none;
+}
+</style>
+	
+	<style>
+	.tercoContent.ui-content{
+    padding-left:0;
+	}​
+	</style>
+	
+</head> 
+<body onload="init()"> 
+
+<div data-role="page" id="homePage">
+
+	<div data-role="header">
+		<h1>Pray</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" id="content">
+	
+	
+		<div style=" text-align:center">
+			<img style="display: block;
+	margin: 1em auto 0;
+	width: 75%;" src="Jesus.png">
+		</div>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p><p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p><p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p><p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<p>aaaa</p>
+		<div class="existingPrayers">
+			
+		</div>
+		
+		
+	</div>
+
+	<div data-role="footer" data-position="fixed" data-id="footerMenu">		
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#homePage" data-icon="home" data-iconpos="notext"></a></li>
+				<li><a href="#prayerPage" data-icon="star" data-iconpos="notext"></a></li>
+				<li><a href="#" data-icon="refresh" data-iconpos="notext" class="ofertar"></a></li>
+				<li><a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="config"></a></li>				
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="prayerPage">
+	<div data-role="header">
+		<h1>Pray</h1>
+	</div><!-- /header -->
+	
+	
+	
+	<div data-role="content" id="content">
+        <p id="message"/>
+        <ul data-role="listview" data-inset="true" id="praylist">
+            <li data-role="list-divider"  >Orações</li>            
+			<li><a href="#tercoPage">Terço</a></li>
+        </ul>
+    </div>
+	
+	<div data-role="footer" data-position="fixed" data-id="footerMenu">		
+		<div data-role="navbar">
+			<ul>				
+				<li><a href="#homePage" data-icon="home" data-iconpos="notext"></a></li>
+				<li><a href="#prayerPage" data-icon="star" data-iconpos="notext"></a></li>				
+				<li><a href="#" data-icon="refresh" data-iconpos="notext" class="ofertar"></a></li>
+				<li><a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="config"></a></li>				
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
+</div>
+
+
+
+<div data-role="page" id="tercoPage" style='background:#fff'>
+	<div data-role="header">
+		<h1>Holy Rosary</h1>
+	</div>
+
+	<div data-role="content" style='padding:0'>
+
+    <div id='slider' class='swipe'>
+    <div class='swipe-wrap'>
+	
+	    <div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/></div>
+		
+		  <div><span>Pai Nosso</span></div>
+          <div><span>Ave Maria 1</span></div>
+          <div><span>Ave Maria 2</span></div>
+          <div><span>Ave Maria 3</span></div>
+		  
+		  <div><span>Glória</span></div>
+		
+        <div><span> <p>1o Mistério - A Anunciação de Nossa Senhora </p><img src="http://upload.wikimedia.org/wikipedia/en/1/19/The_Annunciation.jpg" style="max-width: 100%"/>
+		</span>
+          </div>
+          <div><span>Pai Nosso</span></div>
+          <div><span>Ave Maria 1</span></div>
+          <div><span>Ave Maria 2</span></div>
+          <div><span>Ave Maria 3</span></div>
+          <div><span>Ave Maria 4</span></div>
+          <div><span>Ave Maria 5</span></div>
+          <div><span>Ave Maria 6</span></div>
+          <div><span>Ave Maria 7</span></div>
+          <div><span>Ave Maria 8</span></div>
+          <div><span>Ave Maria 9</span></div>
+          <div><span>Ave Maria 10</span></div>
+		  
+		  <div><span>Glória</span></div>
+		  
+		  <div><span>Ó meu bom Jesus ! Perdoai-nos e livrai-nos do fogo do inferno. Levai as almas para o céu e socorrei , principalmente , as que mais precisarem. </span></div>
+		  
+        <div><span> <p> 2o Mistério - Visita a Santa Isabel </p>
+					<img src="http://www.pre-raphaelite-brotherhood.org/213208/Salutation-or-The-Visitation-1883-large.jpg" style="max-width: 100%" /></span></div>
+          
+          <div><span>Pai Nosso</span></div>
+          <div><span>Ave Maria 1</span></div>
+          <div><span>Ave Maria 2</span></div>
+          <div><span>Ave Maria 3</span></div>
+          <div><span>Ave Maria 4</span></div>
+          <div><span>Ave Maria 5</span></div>
+          <div><span>Ave Maria 6</span></div>
+          <div><span>Ave Maria 7</span></div>
+          <div><span>Ave Maria 8</span></div>
+          <div><span>Ave Maria 9</span></div>
+          <div><span>Ave Maria 10</span></div>
+		  
+		  
+		  <div><span>Glória</span></div>
+		  
+		  <div><span>Ó meu bom Jesus ! Perdoai-nos e livrai-nos do fogo do inferno. Levai as almas para o céu e socorrei , principalmente , as que mais precisarem. </span></div>
+          
+          <div><span><p> 3o Mistério - Nascimento do Menino Jesus </p>
+					<img src="http://christmasnativity.ca/wp-content/uploads/2011/11/Gerard_van_Honthorst_001.jpg" style="max-width: 100%" /></span></div>
+          
+          <div><span>Pai Nosso</span></div>
+          <div><span>Ave Maria 1</span></div>
+          <div><span>Ave Maria 2</span></div>
+          <div><span>Ave Maria 3</span></div>
+          <div><span>Ave Maria 4</span></div>
+          <div><span>Ave Maria 5</span></div>
+          <div><span>Ave Maria 6</span></div>
+          <div><span>Ave Maria 7</span></div>
+          <div><span>Ave Maria 8</span></div>
+          <div><span>Ave Maria 9</span></div>
+          <div><span>Ave Maria 10</span></div>
+		  
+		  
+		  <div><span>Glória</span></div>
+		  
+		  <div><span>Ó meu bom Jesus ! Perdoai-nos e livrai-nos do fogo do inferno. Levai as almas para o céu e socorrei , principalmente , as que mais precisarem. </span></div>
+          
+		  
+		  <div><span><p> 4o Mistério - A Apresentação de Jesus no Templo </p>
+					<img src="images/presentation-bellini.jpg" style="max-width: 100%" /></span></div>
+          
+          <div><span>Pai Nosso</span></div>
+          <div><span>Ave Maria 1</span></div>
+          <div><span>Ave Maria 2</span></div>
+          <div><span>Ave Maria 3</span></div>
+          <div><span>Ave Maria 4</span></div>
+          <div><span>Ave Maria 5</span></div>
+          <div><span>Ave Maria 6</span></div>
+          <div><span>Ave Maria 7</span></div>
+          <div><span>Ave Maria 8</span></div>
+          <div><span>Ave Maria 9</span></div>
+          <div><span>Ave Maria 10</span></div>
+		  
+		  
+		  <div><span>Glória</span></div>
+		  
+		  <div><span>Ó meu bom Jesus ! Perdoai-nos e livrai-nos do fogo do inferno. Levai as almas para o céu e socorrei , principalmente , as que mais precisarem. </span></div>
+          
+		    <div><span><p> 5o Mistério - O Encontro do Menino Jesus no Templo </p>
+					<img src="images/finding.jpg" style="max-width: 100%" /></span></div>
+          
+          
+          <div><span>Pai Nosso</span></div>
+          <div><span>Ave Maria 1</span></div>
+          <div><span>Ave Maria 2</span></div>
+          <div><span>Ave Maria 3</span></div>
+          <div><span>Ave Maria 4</span></div>
+          <div><span>Ave Maria 5</span></div>
+          <div><span>Ave Maria 6</span></div>
+          <div><span>Ave Maria 7</span></div>
+          <div><span>Ave Maria 8</span></div>
+          <div><span>Ave Maria 9</span></div>
+          <div><span>Ave Maria 10</span></div>
+		  
+		  <div><span>Glória</span></div>
+		  
+		  <div><span>Ó meu bom Jesus ! Perdoai-nos e livrai-nos do fogo do inferno. Levai as almas para o céu e socorrei , principalmente , as que mais precisarem. </span></div>
+		  
+		  <div><span>Salve Rainha</span></div>
+
+      </div>
+    </div> <!-- /slider -->
+
+    
+
+
+  </div> <!-- /content -->
+
+
+
+
+	<div data-role="footer" data-position="fixed" data-id="footerMenu">		
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" data-icon="arrow-l" data-iconpos="notext" class="pray-prev"></a></li>
+				<li><a href="#homePage" data-icon="home" data-iconpos="notext"></a></li>
+				<li><a href="#prayerPage" data-icon="star" data-iconpos="notext"></a></li>
+				<li><a href="#" data-icon="refresh" data-iconpos="notext" class="ofertar"></a></li>
+				<li><a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="config"></a></li>		
+				<li><a href="#" data-icon="arrow-r" data-iconpos="notext" class="pray-next"></a></li>				
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div data-role="page" id="settingsPage">
+	<div data-role="header">
+		<h1>Pray</h1>
+	</div>
+	
+	
+	
+	<div data-role="content" id="content">
+        <p id="message"/>
+        <ul data-role="listview" data-inset="true" id="praylist">
+            <li data-role="list-divider"  >Configurações</li>            
+            <a href="#clearStorage"  data-role="button" data-rel="dialog" class="clearStorage">Limpar dados do usuário</a>
+        </ul>
+    </div>
+	
+	<div data-role="footer" data-position="fixed" data-id="footerMenu">		
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#homePage" data-icon="home" data-iconpos="notext"></a></li>
+				<li><a href="#prayerPage" data-icon="star" data-iconpos="notext"></a></li>				
+				<li><a href="#" data-icon="refresh" data-iconpos="notext" class="ofertar"></a></li>
+				<li><a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="config"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
+</div>
+
+
+
+<div id="loginPage" data-role="page">
+
+    <div data-role="header">
+        <h1>Pray</h1>
+    </div>
+
+    <div data-role="content">    
+
+        <form id="loginForm">
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="username">Usuário:</label>
+            <input type="text" name="username" id="username" value="" placeholder="Usuário" />
+        </div>
+
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" value="" placeholder="Password" />
+        </div>
+
+        <input type="submit" value="Login" id="loginButton">
+		<input type="submit" value="Sign up" id="signupButton">
+        </form>
+        
+    </div>
+
+	<div data-role="footer" data-position="fixed" data-id="footerMenu">		
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#homePage" data-icon="home" data-iconpos="notext"></a></li>
+				<li><a href="#prayerPage" data-icon="star" data-iconpos="notext"></a></li>
+				<li><a href="#" data-icon="refresh" data-iconpos="notext" class="ofertar"></a></li>
+				<li><a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="config"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
+</div>
+
+<div  id="clearStorage" data-role="page">
+		<div data-role="header">
+			<h1>Pray</h1>
+
+		</div>
+
+		<div data-role="content">
+			<h1>Dados apagados</h1>
+			<p>O seu usuário e sua senha, assim como as orações não ofertadas foram todos limpos</p>
+			<a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="a">Ok</a>       			
+		</div>
+	</div>
+
+
+
+
+<script type="text/javascript">
+var prayers = [{id:"PaiNosso",name:"Pai Nosso"},{id:"AveMaria",name:"Ave Maria"},{id:"SantoAnjo",name:"Santo Anjo"},
+{id:"TercoGozoso",name:"Terço Gozoso"},{id:"TercoDoloroso",name:"Terço Doloroso"},{id:"TercoGlorioso",name:"Terço Glorioso"},
+{id:"TercoLuminoso",name:"Terço Luminoso"}];
+var prayedInstance = [];
+var user = {user:"",userId:"",pass:""};
+var serverUrl = "http://192.168.0.11:8888/prayback";
+var existingPrayers = [];
+
+function syncServer(){
+	$.ajax({
+				url: serverUrl + "/secure",
+				type: 'POST',
+				data: {prayers:JSON.stringify(prayers),user:JSON.stringify(user)},//PaiNosso:localStorage.getItem('PaiNosso')}, // An object with the key 'submit' and value 'true;
+				dataType: 'json',
+				success: function (json) {
+				
+					if(json!= null && json.error != null){
+						alert("Erro: " +json.error);
+					}
+					else{
+						localStorage.setItem("user", user.userId);
+						localStorage.setItem("pass", user.hashPassword);
+						
+								
+						
+						prayers.map( function(prayer) {
+							if(localStorage.getItem(prayer.id)!=null){
+								localStorage.setItem(prayer.id,0);
+							}								
+						});
+						
+						uploadCounter();						
+						alert("Oferta enviada");		
+						if( json.existingPrayers !=null){
+							existingPrayers = json.existingPrayers;
+							loadUserData();
+						}
+						$.mobile.changePage( "#homePage", { transition: "slideup"} );			
+					}
+				},				
+				 error: function(  jqXHR,  textStatus,  errorThrown )
+				{
+					alert('An Error has occured, please try again.' + jqXHR);
+				}
+
+			});  
+}
+
+function createUser(localUser,pass){
+	$.ajax({
+				url: serverUrl + '/createUser',
+				type: 'POST',
+				data: {"user":JSON.stringify(user)},
+				dataType: 'json',
+				success: function (json) {
+					if(json!= null && json.error != null){
+						alert("Erro: " +json.error);
+					}
+					else{
+						localStorage.setItem("user", localUser);
+						localStorage.setItem("pass", pass);
+																		
+						prayers.map( function(prayer) {
+							if(localStorage.getItem(prayer.id)!=null){
+								localStorage.setItem(prayer.id,0);
+							}								
+						});
+						
+						uploadCounter();
+						alert("Sucesso: " + json.success);
+					}
+					
+				},
+				 error: function(error)
+				{
+					alert('Não foi possível criar um usuário.');
+				}
+
+			});  
+}
+
+
+
+
+function init(){
+
+	/*if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+        document.addEventListener("deviceready", deviceReady, false);
+    } else {
+        deviceReady();
+    }*/
+	deviceReady();
+	
+	window.slider = new Swipe(document.getElementById('slider'), {
+			startSlide:0,
+		
+			callback: function(index, elem) {
+				
+
+			}
+		
+		});
+	
+	$('#tercoPage').live('pageshow',function(){
+
+		
+	
+
+	});
+	
+	
+}
+
+function deviceReady() {
+	loadUserData();
+	loadPrayers();		
+	
+	$(".pray-prev").on("click", function (e){
+		window.slider.prev();
+	});
+	
+	$(".pray-next").on("click", function (e){
+		window.slider.next();
+	});
+	
+
+	if(checkPreAuth()){
+		$.mobile.changePage( "#homePage", { transition: "slideup"} );			
+	}
+	else{
+		$.mobile.changePage( "#loginPage", { transition: "slideup"} );			
+	}
+	
+	$(".clearStorage").on("click", function (e){
+		localStorage.clear();		
+	});
+	
+	
+	$("#loginButton").on("click",function(e){
+		//$("#loginButton",this).attr("disabled","disabled");	
+		user.userId = $("#username").val();
+		user.hashPassword = $("#password").val();
+		if(user.id != '' && password.id != '') {
+			syncServer();		
+		}
+		return false;
+	});		
+	
+	$("#signupButton").on("click",function(e){
+		//$("#loginButton",this).attr("disabled","disabled");	
+		user.userId = $("#username").val();
+		user.hashPassword = $("#password").val();
+		if(user.id != '' && password.id != '') {
+			createUser(user.userId,user.hashPassword);		
+		}
+		return false;
+	});	
+		
+	
+	
+	$(".ofertar").on ("click", function (event)
+	{
+		if(checkPreAuth()){
+			syncServer();
+		} else{
+			$.mobile.changePage( "#loginPage", { transition: "slideup"} );			
+		}
+
+	});
+	
+	
+
+}
+
+function loadUserData(){
+
+	prayerSize = existingPrayers.length;
+	prayerHtml = '';
+	for (var i = 0 ; i< prayerSize; i++){
+		thisPrayer = existingPrayers[i];
+		prayerHtml += thisPrayer.name + ' ' + thisPrayer.count + '<br></br>';
+	}
+	$('div.existingPrayers').html(prayerHtml);
+
+}
+
+function checkPreAuth(){
+	if(localStorage.getItem("user") != null && localStorage.getItem("pass") != null){
+		user.userId = localStorage.getItem("user") ;
+		user.hashPassword = localStorage.getItem("pass");
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+function uploadCounter(){
+	for(var i=0;i<prayers.length;i++){
+		var myCount = 0;
+		if(localStorage.getItem(prayers[i].id)!=null){
+			myCount = localStorage.getItem(prayers[i].id);
+		}
+		prayers[i].count = myCount;
+		$('.countItem'+i).text(myCount);
+					
+	}
+}
+
+function loadPrayers(){
+
+
+				   vSize = prayers.length;
+				   for (var i = 0 ; i< vSize; i++){
+		
+					$('#praylist').append('<a id="'+prayers[i].id+'" href="#" data-role="button" data-icon="add">' + prayers[i].name+ ' ' +
+					"<div class='countItem"+i+"'></div></a>");
+					uploadCounter();
+					$('#'+prayers[i].id).click(function(e){
+					$.mobile.loading( 'show');
+						count = this.id;
+					if(localStorage.getItem(count)==null){
+						localStorage.setItem(count, 1);
+					}
+					else {
+						atual = parseInt(localStorage.getItem(count));
+						localStorage.setItem(count, atual+1);
+					}	
+					uploadCounter();
+					 setTimeout(function() { $.mobile.loading( 'hide');}, 1000); 
+					
+					
+					});
+					}
+				   $("a[data-role='button']").button();
+				   $('homePage').page();
+				
+
+}
+</script>
+
+	
+
+</body>
+</html>
