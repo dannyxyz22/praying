@@ -936,7 +936,9 @@ function init(){
     }*/
 	deviceReady();
 	
-	window.sliderGozoso = new Swipe(document.getElementById('sliderGozoso'), {
+	$('#tercoGozosoPage').on('pageshow',function(){
+
+		window.sliderGozoso = new Swipe(document.getElementById('sliderGozoso'), {
 			startSlide:0,
 			sliderName:"TercoGozoso",
 			callback: function(index, elem) {						
@@ -954,7 +956,11 @@ function init(){
 			}
 		
 		});
-		
+
+	});
+	
+	
+	$('#tercoDolorosoPage').on('pageshow',function(){	
 		
 		
 		window.sliderDoloroso = new Swipe(document.getElementById('sliderDoloroso'), {
@@ -975,7 +981,9 @@ function init(){
 			}
 		
 		});
+	});
 		
+	$('#tercoLuminosoPage').on('pageshow',function(){	
 		window.sliderLuminoso = new Swipe(document.getElementById('sliderLuminoso'), {
 			startSlide:0,
 			sliderName:"TercoLuminoso",
@@ -994,7 +1002,9 @@ function init(){
 			}
 		
 		});
-		
+	});
+	
+	$('#tercoGloriosoPage').on('pageshow',function(){	
 		window.sliderGlorioso = new Swipe(document.getElementById('sliderGlorioso'), {
 			startSlide:0,
 			sliderName:"TercoGlorioso",
@@ -1013,6 +1023,7 @@ function init(){
 			}
 		
 		});
+	});
 		
 	
 	$('#tercoGozosoPage').live('pageshow',function(){
