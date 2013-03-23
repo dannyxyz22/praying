@@ -78,17 +78,21 @@
 <div data-role="page" id="homePage">
 
 	<div data-role="header">
-		<h1>Legatus Christi</h1>
+		<h1 style="text-align:left; margin-left:10px;">Legatus Christi</h1>
+		<a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Opções</a>
 	</div><!-- /header -->
 
 	<div data-role="content" id="content">
-	
+		
 	
 		<div style=" text-align:center">
 			<img style="display: block;
 	margin: 1em auto 0;
 	width: 75%;" src="images/Jesus.png">
 		</div>		
+		
+		<a href="#prayerPage" data-icon="star" data-role='button'>Orações</a>
+		
 		<div class="existingPrayers">
 			
 		</div>
@@ -108,7 +112,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="prayerPage">
+<div data-role="page" id="prayerPage" data-add-back-btn='true'>
 	<div data-role="header">
 		<h1>Legatus Christi</h1>
 	</div><!-- /header -->
@@ -117,6 +121,7 @@
 	
 	<div data-role="content" id="content">
         <p id="message"/>
+		<a href="#" data-icon="refresh"  class="ofertar" data-role='button'>Ofertar</a>
         <ul data-role="listview" data-inset="true" id="praylist">
             <li data-role="list-divider"  >Orações</li>            
 			<li><a href="#tercoGozosoPage">Terço Gozoso</a></li>
@@ -144,7 +149,7 @@
 
 
 
-<div data-role="page" id="tercoGozosoPage" style='background:#414141'>
+<div data-role="page" id="tercoGozosoPage" style='background:#414141' data-add-back-btn='true'>
 
 	<div data-role="header">
 		<h1>Terço Gozoso</h1>
@@ -295,7 +300,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="tercoDolorosoPage" style='background:#414141'>
+<div data-role="page" id="tercoDolorosoPage" style='background:#414141' data-add-back-btn='true'>
 	<div data-role="header">
 		<h1>Terço Doloroso</h1>
 	</div>
@@ -447,7 +452,7 @@
 </div>
 
 
-<div data-role="page" id="tercoLuminosoPage" style='background:#414141'>
+<div data-role="page" id="tercoLuminosoPage" style='background:#414141' data-add-back-btn='true'>
 	<div data-role="header">
 		<h1>Terço Luminoso</h1>
 	</div>
@@ -597,7 +602,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="tercoGloriosoPage" style='background:#414141'>
+<div data-role="page" id="tercoGloriosoPage" style='background:#414141' data-add-back-btn='true'>
 	<div data-role="header">
 		<h1>Terço Glorioso</h1>
 	</div>
@@ -743,7 +748,7 @@
 </div>
 
 
-<div data-role="page" id="settingsPage">
+<div data-role="page" id="settingsPage" data-add-back-btn="true">
 	<div data-role="header">
 		<h1>Legatus Christi</h1>
 	</div>
@@ -773,7 +778,7 @@
 
 
 
-<div id="loginPage" data-role="page">
+<div id="loginPage" data-role="page" data-add-back-btn='true'>
 
     <div data-role="header">
         <h1>Legatus Christi</h1>
@@ -916,6 +921,7 @@ function createUser(localUser,pass){
 
 function init(){
 
+	$.mobile.page.prototype.options.backBtnText = "Voltar";
 	/*if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
         document.addEventListener("deviceready", deviceReady, false);
     } else {
@@ -1026,6 +1032,7 @@ function init(){
 function deviceReady() {
 	loadUserData();
 	loadPrayers();		
+	
 	
 	$(".pray-prev").on("click", function (e){
 		window.sliderGozoso.prev();
