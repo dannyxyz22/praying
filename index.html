@@ -100,7 +100,10 @@
 		
 	</div>
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> Correcting swap.js calls
 </div>
 
 <div data-role="page" id="prayerPage" data-add-back-btn='true'>
@@ -122,7 +125,12 @@
         </ul>
     </div>
 	
+<<<<<<< HEAD
 	
+=======
+
+
+>>>>>>> Correcting swap.js calls
 </div>
 
 
@@ -268,7 +276,10 @@
   </div> <!-- /content -->
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Correcting swap.js calls
 </div>
 
 <div data-role="page" id="tercoDolorosoPage" style='background:#414141' data-add-back-btn='true'>
@@ -408,9 +419,12 @@
 
   </div> <!-- /content -->
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> Correcting swap.js calls
 </div>
 
 
@@ -551,8 +565,11 @@
   </div> <!-- /content -->
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Correcting swap.js calls
 </div>
 
 <div data-role="page" id="tercoGloriosoPage" style='background:#414141' data-add-back-btn='true'>
@@ -687,8 +704,11 @@
   </div> <!-- /content -->
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Correcting swap.js calls
 </div>
 
 
@@ -706,6 +726,12 @@
             <a href="#clearStorage"  data-role="button" data-rel="dialog" class="clearStorage">Limpar dados do usuário</a>
         </ul>
     </div>
+<<<<<<< HEAD
+=======
+	
+
+
+>>>>>>> Correcting swap.js calls
 </div>
 
 
@@ -852,92 +878,110 @@ function init(){
 	deviceReady();
 	
 	$('#tercoGozosoPage').on('pageshow',function(){
-
-		window.sliderGozoso = new Swipe(document.getElementById('sliderGozoso'), {
-			startSlide:0,
-			sliderName:"TercoGozoso",
-			callback: function(index, elem) {						
-				if(index==78){
-					window.sliderGozoso.slide(0,300);
-					updateCounter(this.sliderName);
-					alert("Amém");
-				}
-				
-		
-			},
+		if(!window.swipeSliderGozoso){
+			window.swipeSliderGozoso = new Swipe(document.getElementById('sliderGozoso'), {
+				startSlide:0,
+				sliderName:"TercoGozoso",
+				callback: function(index, elem) {						
+					if(index==78){
+						window.swipeSliderGozoso.slide(0,300);
+						updateCounter(this.sliderName);
+						alert("Amém");
+					}
+					
 			
-			transitionEnd: function(index, elem) {
+				},
 				
-			}
-		
-		});
-
+				transitionEnd: function(index, elem) {
+					
+				}
+			
+			});
+		}
+		else{
+			window.swipeSliderGozoso.slide(20,200);
+		}
 	});
 	
 	
 	$('#tercoDolorosoPage').on('pageshow',function(){	
 		
-		
-		window.sliderDoloroso = new Swipe(document.getElementById('sliderDoloroso'), {
-			startSlide:0,
-			sliderName:"TercoDoloroso",
-			callback: function(index, elem) {						
-				if(index==78){
-					window.sliderDoloroso.slide(0,300);
-					updateCounter(this.sliderName);
-					alert("Amém");
-				}
-				
-		
-			},
+		if(!window.swipeSliderDoloroso){
+			window.swipeSliderDoloroso = new Swipe(document.getElementById('sliderDoloroso'), {
+				startSlide:0,
+				sliderName:"TercoDoloroso",
+				callback: function(index, elem) {						
+					if(index==78){
+						window.swipeSliderDoloroso.slide(0,300);
+						updateCounter(this.sliderName);
+						alert("Amém");
+					}
+					
 			
-			transitionEnd: function(index, elem) {
+				},
 				
-			}
-		
-		});
+				transitionEnd: function(index, elem) {
+					
+				}
+			
+			});
+		}
+		else{
+			window.swipeSliderDoloroso.slide(20,200);
+		}
 	});
 		
-	$('#tercoLuminosoPage').on('pageshow',function(){	
-		window.sliderLuminoso = new Swipe(document.getElementById('sliderLuminoso'), {
-			startSlide:0,
-			sliderName:"TercoLuminoso",
-			callback: function(index, elem) {						
-				if(index==78){
-					window.sliderLuminoso.slide(0,300);
-					updateCounter(this.sliderName);
-					alert("Amém");
-				}
-				
-		
-			},
+	$('#tercoLuminosoPage').on('pageshow',function(){
+		if(!window.swipeSliderLuminoso){
+			window.swipeSliderLuminoso = new Swipe(document.getElementById('sliderLuminoso'), {
+				startSlide:0,
+				sliderName:"TercoLuminoso",
+				callback: function(index, elem) {						
+					if(index==78){
+						window.swipeSliderLuminoso.slide(0,300);
+						updateCounter(this.sliderName);
+						alert("Amém");
+					}
+					
 			
-			transitionEnd: function(index, elem) {
+				},
 				
-			}
-		
-		});
+				transitionEnd: function(index, elem) {
+					
+				}
+			
+			});	
+		}
+		else{
+			window.swipeSliderLuminoso.slide(20,200);
+		}
 	});
 	
+	
 	$('#tercoGloriosoPage').on('pageshow',function(){	
-		window.sliderGlorioso = new Swipe(document.getElementById('sliderGlorioso'), {
-			startSlide:0,
-			sliderName:"TercoGlorioso",
-			callback: function(index, elem) {						
-				if(index==78){
-					window.sliderGlorioso.slide(0,300);
-					updateCounter(this.sliderName);
-					alert("Amém");
-				}
-				
-		
-			},
+		if(window.swipeSliderGlorioso == null){
+			window.swipeSliderGlorioso = new Swipe(document.getElementById('sliderGlorioso'), {
+				startSlide:0,
+				sliderName:"TercoGlorioso",
+				callback: function(index, elem) {						
+					if(index==78){
+						window.swipeSliderGlorioso.slide(0,300);
+						updateCounter(this.sliderName);
+						alert("Amém");
+					}
+					
 			
-			transitionEnd: function(index, elem) {
+				},
 				
-			}
-		
-		});
+				transitionEnd: function(index, elem) {
+					
+				}
+			
+			});
+		}
+		else{
+			window.swipeSliderGlorioso.slide(20,200);
+		}
 	});
 		
 	
