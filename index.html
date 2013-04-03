@@ -864,7 +864,15 @@ function createUser(localUser,pass){
 			});  
 }
 
-
+function retrieveRosaryPosition(rosaryId){
+	var position = 0;
+	var rosaryKey = rosaryId + 'Position';
+	
+	if(localStorage.getItem(rosaryKey)!=null){
+		position = parseInt(localStorage.getItem(rosaryKey));
+	}
+	return position;
+}
 
 
 function init(){
@@ -882,7 +890,10 @@ function init(){
 			window.swipeSliderGozoso = new Swipe(document.getElementById('sliderGozoso'), {
 				startSlide:0,
 				sliderName:"TercoGozoso",
-				callback: function(index, elem) {						
+				callback: function(index, elem) {
+				
+				localStorage.setItem(this.sliderName + 'Position', index);
+					
 					if(index==78){
 						window.swipeSliderGozoso.slide(0,300);
 						updateCounter(this.sliderName);
@@ -899,7 +910,7 @@ function init(){
 			});
 		}
 		else{
-			window.swipeSliderGozoso.slide(20,200);
+			window.swipeSliderGozoso.slide(retrieveRosaryPosition('TercoGozoso'),200);
 		}
 	});
 	
@@ -910,7 +921,9 @@ function init(){
 			window.swipeSliderDoloroso = new Swipe(document.getElementById('sliderDoloroso'), {
 				startSlide:0,
 				sliderName:"TercoDoloroso",
-				callback: function(index, elem) {						
+				callback: function(index, elem) {		
+					localStorage.setItem(this.sliderName + 'Position', index);		
+					
 					if(index==78){
 						window.swipeSliderDoloroso.slide(0,300);
 						updateCounter(this.sliderName);
@@ -927,7 +940,7 @@ function init(){
 			});
 		}
 		else{
-			window.swipeSliderDoloroso.slide(20,200);
+			window.swipeSliderGozoso.slide(retrieveRosaryPosition('TercoDoloroso'),200);
 		}
 	});
 		
@@ -936,7 +949,8 @@ function init(){
 			window.swipeSliderLuminoso = new Swipe(document.getElementById('sliderLuminoso'), {
 				startSlide:0,
 				sliderName:"TercoLuminoso",
-				callback: function(index, elem) {						
+				callback: function(index, elem) {		
+					localStorage.setItem(this.sliderName + 'Position', index);				
 					if(index==78){
 						window.swipeSliderLuminoso.slide(0,300);
 						updateCounter(this.sliderName);
@@ -953,7 +967,7 @@ function init(){
 			});	
 		}
 		else{
-			window.swipeSliderLuminoso.slide(20,200);
+			window.swipeSliderGozoso.slide(retrieveRosaryPosition('TercoLuminoso'),200);
 		}
 	});
 	
@@ -963,7 +977,8 @@ function init(){
 			window.swipeSliderGlorioso = new Swipe(document.getElementById('sliderGlorioso'), {
 				startSlide:0,
 				sliderName:"TercoGlorioso",
-				callback: function(index, elem) {						
+				callback: function(index, elem) {				
+					localStorage.setItem(this.sliderName + 'Position', index);				
 					if(index==78){
 						window.swipeSliderGlorioso.slide(0,300);
 						updateCounter(this.sliderName);
@@ -980,7 +995,7 @@ function init(){
 			});
 		}
 		else{
-			window.swipeSliderGlorioso.slide(20,200);
+			window.swipeSliderGozoso.slide(retrieveRosaryPosition('TercoGlorioso'),200);
 		}
 	});
 		
