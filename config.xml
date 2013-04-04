@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+Ôªø<?xml version="1.0" encoding="UTF-8"?>
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
@@ -9,7 +9,7 @@
     <name>Legatus Christi</name>
 
     <description>
-        Legatus Christi È um aplicativo para incentivar a oraÁ„o di·ria extremamente importante na vida de um crist„o.
+        Legatus Christi √© um aplicativo para incentivar a ora√ß√£o di√°ria extremamente importante na vida de um crist√£o.
     </description>
 
     <author href="http://prayingback.appspot.com" email="danielbaggio@gmail.com">
