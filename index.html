@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html> 
 <html> 
 <head> 
-	<title>Amém</title> 
+	<title>Legatus Christi</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.2.0.min.css" />
@@ -91,7 +91,8 @@
 	max-width: 75%;" src="images/Jesus.png">
 		</div>		
 		
-		<a href="#prayerPage" data-icon="star" data-role='button'>Orações</a>
+		<a href="#prayerPage" data-icon="star" data-role='button'>Orações</a>		
+		<a href="#ofertasPage" data-icon="star" data-role='button'>Ofertas</a>		
 		
 		<div class="existingPrayers">
 			
@@ -99,6 +100,25 @@
 		
 		
 	</div>
+
+</div>
+
+<div data-role="page" id="ofertasPage" data-add-back-btn='true'>
+	<div data-role="header">
+		<h1>Ofertas</h1>
+	</div><!-- /header -->
+	
+	<a href="#" data-icon="refresh"  class="ofertar" data-role='button'>Ofertar</a>
+	
+	<div data-role="content" id="content">
+        <p id="message"/>		
+        <ul data-role="listview" data-inset="true" id="praylist">
+            <li data-role="list-divider"  >Ofertas</li>            
+			<div id="listOfertas"></div>
+        </ul>
+    </div>
+	
+
 
 </div>
 
@@ -110,8 +130,7 @@
 	
 	
 	<div data-role="content" id="content">
-        <p id="message"/>
-		<a href="#" data-icon="refresh"  class="ofertar" data-role='button'>Ofertar</a>
+        <p id="message"/>		
         <ul data-role="listview" data-inset="true" id="praylist">
             <li data-role="list-divider"  >Orações</li>            
 			<li><a href="#tercoGozosoPage">Terço Gozoso</a></li>
@@ -130,9 +149,10 @@
 
 
 
-<div data-role="page" id="tercoGozosoPage" style='background:#414141' data-add-back-btn='true'>
+<div data-role="page" id="tercoGozosoPage" style='background:#414141' >
 
 	<div data-role="header">
+		<a href="#prayerPage" data-icon="arrow-l">Voltar</a>
 		<h1>Terço Gozoso</h1>
 	</div>
 	
@@ -270,8 +290,9 @@
 
 </div>
 
-<div data-role="page" id="tercoDolorosoPage" style='background:#414141' data-add-back-btn='true'>
+<div data-role="page" id="tercoDolorosoPage" style='background:#414141'>
 	<div data-role="header">
+		<a href="#prayerPage" data-icon="arrow-l">Voltar</a>
 		<h1>Terço Doloroso</h1>
 	</div>
 	
@@ -410,8 +431,9 @@
 </div>
 
 
-<div data-role="page" id="tercoLuminosoPage" style='background:#414141' data-add-back-btn='true'>
+<div data-role="page" id="tercoLuminosoPage" style='background:#414141'>
 	<div data-role="header">
+		<a href="#prayerPage" data-icon="arrow-l">Voltar</a>
 		<h1>Terço Luminoso</h1>
 	</div>
 	
@@ -549,8 +571,9 @@
 
 </div>
 
-<div data-role="page" id="tercoGloriosoPage" style='background:#414141' data-add-back-btn='true'>
+<div data-role="page" id="tercoGloriosoPage" style='background:#414141'>
 	<div data-role="header">
+		<a href="#prayerPage" data-icon="arrow-l">Voltar</a>
 		<h1>Terço Glorioso</h1>
 	</div>
 	
@@ -760,7 +783,7 @@
 
 
 <script type="text/javascript">
-var prayers = [{id:"PaiNosso",name:"Pai Nosso"},{id:"AveMaria",name:"Ave Maria"},{id:"SantoAnjo",name:"Santo Anjo"},
+var prayers = [//{id:"PaiNosso",name:"Pai Nosso"},{id:"AveMaria",name:"Ave Maria"},{id:"SantoAnjo",name:"Santo Anjo"},
 {id:"TercoGozoso",name:"Terço Gozoso"},
 
 {id:"TercoDoloroso",name:"Terço Doloroso"},{id:"TercoGlorioso",name:"Terço Glorioso"},
@@ -987,7 +1010,8 @@ function init(){
 
 function deviceReady() {
 	loadUserData();
-	loadPrayers();		
+//	loadPrayers();		
+	uploadCounter();
 	
 	
 	$(".pray-prev").on("click", function (e){
