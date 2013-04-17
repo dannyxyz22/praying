@@ -105,25 +105,24 @@
 
 <div data-role="page" id="ofertasPage" data-add-back-btn='true'>
 	<div data-role="header">
+		<a href="#homePage" data-icon="arrow-l">Voltar...</a>
 		<h1>Ofertas</h1>
 	</div><!-- /header -->
-	
-	<a href="#" data-icon="refresh"  class="ofertar" data-role='button'>Ofertar</a>
+	<center><img src="images/offer.png" ></center>
+	<a href="#" data-icon="refresh"  class="ofertar" data-role='button'> Ofertar</a>
 	
 	<div data-role="content" id="content">
         <p id="message"/>		
-        <ul data-role="listview" data-inset="true" id="praylist">
-            <li data-role="list-divider"  >Ofertas</li>            
-			<div id="listOfertas"></div>
+        <ul data-role="listview" data-inset="true" id="offerList">
+            <li data-role="list-divider"  >Ofertas</li>            			
         </ul>
     </div>
-	
-
 
 </div>
 
-<div data-role="page" id="prayerPage" data-add-back-btn='true'>
+<div data-role="page" id="prayerPage" >
 	<div data-role="header">
+		<a href="#homePage" data-icon="arrow-l">Voltar</a>
 		<h1>Legatus Christi</h1>
 	</div><!-- /header -->
 	
@@ -133,10 +132,10 @@
         <p id="message"/>		
         <ul data-role="listview" data-inset="true" id="praylist">
             <li data-role="list-divider"  >Orações</li>            
-			<li><a href="#tercoGozosoPage">Terço Gozoso</a></li>
-			<li><a href="#tercoDolorosoPage">Terço Doloroso</a></li>
-			<li><a href="#tercoGloriosoPage">Terço Glorioso</a></li>
-			<li><a href="#tercoLuminosoPage">Terço Luminoso</a></li>
+			<li><a href="#tercoGozosoPage">   <img src="images/annunciation.jpg" > Terço Gozoso</a></li>
+			<li><a href="#tercoDolorosoPage"> <img src="images/carrycross.jpg" >Terço Doloroso</a></li>
+			<li><a href="#tercoGloriosoPage"> <img src="images/ressurection.jpg" >Terço Glorioso</a></li>
+			<li><a href="#tercoLuminosoPage"> <img src="images/supper.jpg" >Terço Luminoso</a></li>
         </ul>
     </div>
 	
@@ -887,6 +886,11 @@ function init(){
     }*/
 	deviceReady();
 	
+	
+	$('#ofertasPage').on('pageshow',function(){			
+		loadOffers();
+	});
+	
 	$('#tercoGozosoPage').on('pageshow',function(){
 		
 			window.swipeSliderGozoso = new Swipe(document.getElementById('sliderGozoso'), {
@@ -999,7 +1003,7 @@ function init(){
 		
 	
 	$('#tercoGozosoPage').live('pageshow',function(){
-
+		
 		
 	
 
@@ -1103,6 +1107,21 @@ function uploadCounter(){
 		prayers[i].count = myCount;
 		$('.countItem'+i).text(myCount);
 					
+	}
+}
+
+function loadOffers(){
+	var vSize = prayers.length;
+	var existemOfertas = false;
+	for (var i = 0 ; i< vSize; i++){
+		if(prayers[i].count>0){
+			$('#offerList').append('<li>' + prayers[i].name+ ' ' + prayers[i].count + '</li>');
+			existemOfertas = true;
+		}
+		
+	}
+	if(!existemOfertas){
+			$('#offerList').html('Não existem ofertas. Reze um terço completo para encher sua cesta.');
 	}
 }
 
