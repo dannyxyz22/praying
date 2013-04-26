@@ -132,7 +132,10 @@
         <p id="message"/>		
         <ul data-role="listview" data-inset="true" id="praylist">
             <li data-role="list-divider"  >Orações</li>            
-			<li><a href="#tercoGozosoPage">   <img src="images/pre-gozoso.jpg" > Terço Gozoso</a></li>
+			
+			Colocar o atributo .data do jquery para passar o terço e ligar com o dialog criado 
+			
+			<li><a href="#" class="linkTercoGozoso">   <img src="images/pre-gozoso.jpg" > Terço Gozoso</a></li>
 			<li><a href="#tercoDolorosoPage"> <img src="images/pre-doloroso.jpg" >Terço Doloroso</a></li>
 			<li><a href="#tercoGloriosoPage"> <img src="images/pre-glorioso.jpg" >Terço Glorioso</a></li>
 			<li><a href="#tercoLuminosoPage"> <img src="images/pre-luminoso.jpg" >Terço Luminoso</a></li>
@@ -142,10 +145,6 @@
 
 
 </div>
-
-
-
-
 
 
 <div data-role="page" id="tercoGozosoPage" style='background:#414141' >
@@ -1019,7 +1018,7 @@
         <p id="message"/>
         <ul data-role="listview" data-inset="true" id="praylist">
             <li data-role="list-divider"  >Configurações</li>            
-            <a href="#clearStorage"  data-role="button" data-rel="dialog" class="clearStorage">Limpar dados do usuário</a>
+            <a href="#clearStoragePage"  data-role="button" data-rel="dialog" class="clearStorage">Limpar dados do usuário</a>
         </ul>
     </div>
 	
@@ -1067,7 +1066,7 @@
 
 </div>
 
-<div  id="clearStorage" data-role="page">
+<div  id="clearStoragePage" data-role="page">
 		<div data-role="header">
 			<h1>Legatus Christi</h1>
 
@@ -1078,7 +1077,32 @@
 			<p>O seu usuário e sua senha, assim como as orações não ofertadas foram todos limpos</p>
 			<a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="a">Ok</a>       			
 		</div>
-	</div>
+</div>
+
+
+<div  id="confirmRosaryPage" data-role="dialog">
+		<div data-role="header">
+			<h1>Legatus Christi</h1>
+
+		</div>
+
+		
+		<div data-role="content" >
+			
+			<h1> <div class="rosaryTitle"> Legatus Christi </div> </h1>
+			<p>O que você deseja fazer?</p>
+			<a href="page-dialogs.html" data-role="button" data-theme="b" class="rosaryContinuar">Continuar de onde parou</a>       
+			<a href="page-dialogs.html" data-role="button" >Ir para o primeiro mistério</a>       
+			<a href="page-dialogs.html" data-role="button" >Ir para o segundo mistério</a>       
+			<a href="page-dialogs.html" data-role="button" >Ir para o terceiro mistério</a>
+			<a href="page-dialogs.html" data-role="button" >Ir para o quarto mistério</a>
+			<a href="page-dialogs.html" data-role="button" >Ir para o quinto mistério</a>
+			<a href="page-dialogs.html" data-role="button" >Ir para as ladainhas</a>
+			<a href="page-dialogs.html" data-role="button" data-rel="back" data-theme="c">Cancelar</a>    
+		</div>
+</div>
+
+
 
 
 
@@ -1191,6 +1215,11 @@ function init(){
 	
 	$('#ofertasPage').on('pageshow',function(){			
 		loadOffers();
+	});
+	
+	$('#confirmRosaryPage').on('pageshow',function(){			
+//		$('div.rosaryTitle').text(prayers[window.currentRosary].name);
+		$('.rosaryContinuar').attr("href", "#"+window.currentRosary+"Page");
 	});
 	
 	$('#tercoGozosoPage').on('pageshow',function(){
@@ -1372,7 +1401,35 @@ function deviceReady() {
 		}
 
 	});
+
+
+	$("#confirmRosaryDialog").dialog({
+    autoOpen: false,
+    resizable: false,
+    height:200,
+    modal: true,
+    buttons: {
+        Cancel: function() {
+            $(this).dialog('close');
+        },
+        'Delete': function() {
+            $(this).dialog('close');
+            var path = $(this).data('link').href; // Get the stored result
+            $(location).attr('href', path);
+        }
+    }
+});
 	
+	$(".linkTercoGozoso").on('click', function(e) {
+		//e.preventDefault();
+		window.currentRosary = 'tercoGozoso';
+		$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);
+		
+		//$("#confirmRosaryPage")
+			//.data('terco', 'tercoGozosoPage')  // The important part .data() method
+			//.dialog('open');
+			//.popup('open');
+	});	
 	
 
 }
