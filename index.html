@@ -131,14 +131,11 @@
 	<div data-role="content" id="content">
         <p id="message"/>		
         <ul data-role="listview" data-inset="true" id="praylist">
-            <li data-role="list-divider"  >Orações</li>            
-			
-			Colocar o atributo .data do jquery para passar o terço e ligar com o dialog criado 
-			
+            <li data-role="list-divider"  >Orações</li>            			
 			<li><a href="#" class="linkTercoGozoso">   <img src="images/pre-gozoso.jpg" > Terço Gozoso</a></li>
-			<li><a href="#tercoDolorosoPage"> <img src="images/pre-doloroso.jpg" >Terço Doloroso</a></li>
-			<li><a href="#tercoGloriosoPage"> <img src="images/pre-glorioso.jpg" >Terço Glorioso</a></li>
-			<li><a href="#tercoLuminosoPage"> <img src="images/pre-luminoso.jpg" >Terço Luminoso</a></li>
+			<li><a href="#" class="linkTercoDoloroso"> <img src="images/pre-doloroso.jpg" >Terço Doloroso</a></li>
+			<li><a href="#" class="linkTercoGlorioso"> <img src="images/pre-glorioso.jpg" >Terço Glorioso</a></li>
+			<li><a href="#" class="linkTercoLuminoso"> <img src="images/pre-luminoso.jpg" >Terço Luminoso</a></li>
         </ul>
     </div>
 	
@@ -147,7 +144,7 @@
 </div>
 
 
-<div data-role="page" id="tercoGozosoPage" style='background:#414141' >
+<div data-role="page" id="TercoGozosoPage" style='background:#414141' >
 
 	<div data-role="header">
 		<a href="#prayerPage" data-icon="arrow-l">Voltar</a>
@@ -364,7 +361,7 @@
 
 </div>
 
-<div data-role="page" id="tercoDolorosoPage" style='background:#414141'>
+<div data-role="page" id="TercoDolorosoPage" style='background:#414141'>
 	<div data-role="header">
 		<a href="#prayerPage" data-icon="arrow-l">Voltar</a>
 		<h1>Terço Doloroso</h1>
@@ -581,7 +578,7 @@
 </div>
 
 
-<div data-role="page" id="tercoLuminosoPage" style='background:#414141' data-add-back-btn='true'>
+<div data-role="page" id="TercoLuminosoPage" style='background:#414141' data-add-back-btn='true'>
 	<div data-role="header">		
 		<h1>Terço Luminoso</h1>
 	</div>
@@ -796,7 +793,7 @@
 
 </div>
 
-<div data-role="page" id="tercoGloriosoPage" style='background:#414141' data-add-back-btn='true'>
+<div data-role="page" id="TercoGloriosoPage" style='background:#414141' data-add-back-btn='true'>
 	<div data-role="header">		
 		<h1>Terço Glorioso</h1>
 	</div>
@@ -1091,13 +1088,16 @@
 			
 			<h1> <div class="rosaryTitle"> Legatus Christi </div> </h1>
 			<p>O que você deseja fazer?</p>
-			<a href="page-dialogs.html" data-role="button" data-theme="b" class="rosaryContinuar">Continuar de onde parou</a>       
-			<a href="page-dialogs.html" data-role="button" >Ir para o primeiro mistério</a>       
-			<a href="page-dialogs.html" data-role="button" >Ir para o segundo mistério</a>       
-			<a href="page-dialogs.html" data-role="button" >Ir para o terceiro mistério</a>
-			<a href="page-dialogs.html" data-role="button" >Ir para o quarto mistério</a>
-			<a href="page-dialogs.html" data-role="button" >Ir para o quinto mistério</a>
-			<a href="page-dialogs.html" data-role="button" >Ir para as ladainhas</a>
+			<a href="page-dialogs.html" data-role="button" data-theme="b" class="rosaryContinuar">Continuar de onde parou</a>    
+			<p>Ir para mistério:</p>
+			<div style="text-align:center;">
+			<a href="page-dialogs.html" data-role="button" data-inline="true" class="1stMistery">1º</a>
+			<a href="page-dialogs.html" data-role="button" data-inline="true" class="2ndMistery">2º</a>
+			<a href="page-dialogs.html" data-role="button" data-inline="true" class="3rdMistery">3º</a>
+			<a href="page-dialogs.html" data-role="button" data-inline="true" class="4thMistery">4º</a>
+			<a href="page-dialogs.html" data-role="button" data-inline="true" class="5thMistery">5º</a>
+			</div>
+			<a href="page-dialogs.html" data-role="button" class="LadainhaMistery">Ladainhas</a>
 			<a href="page-dialogs.html" data-role="button" data-rel="back" data-theme="c">Cancelar</a>    
 		</div>
 </div>
@@ -1201,6 +1201,16 @@ function retrieveRosaryPosition(rosaryId){
 	return position;
 }
 
+function setMisteryPosition(rosaryId,mistery){
+	var position = 7 + (mistery-1)*14;
+	if(mistery==6){
+		position+=1; //SalveRainha
+	}
+	var rosaryKey = rosaryId + 'Position';
+	localStorage.setItem(rosaryKey, position);
+}
+
+
 
 function init(){
 
@@ -1217,12 +1227,19 @@ function init(){
 		loadOffers();
 	});
 	
-	$('#confirmRosaryPage').on('pageshow',function(){			
-//		$('div.rosaryTitle').text(prayers[window.currentRosary].name);
+	
+	$('#confirmRosaryPage').on('pageshow',function(){					
 		$('.rosaryContinuar').attr("href", "#"+window.currentRosary+"Page");
+		$('.1stMistery').attr("href", "#"+window.currentRosary+"Page");
+		$('.2ndMistery').attr("href", "#"+window.currentRosary+"Page");
+		$('.3rdMistery').attr("href", "#"+window.currentRosary+"Page");
+		$('.4thMistery').attr("href", "#"+window.currentRosary+"Page");
+		$('.5thMistery').attr("href", "#"+window.currentRosary+"Page");
+		$('.LadainhaMistery').attr("href", "#"+window.currentRosary+"Page");
 	});
 	
-	$('#tercoGozosoPage').on('pageshow',function(){
+	
+	$('#TercoGozosoPage').on('pageshow',function(){
 		
 			window.swipeSliderGozoso = new Swipe(document.getElementById('sliderGozoso'), {
 				startSlide:retrieveRosaryPosition('TercoGozoso'),
@@ -1252,7 +1269,7 @@ function init(){
 	});
 	
 	
-	$('#tercoDolorosoPage').on('pageshow',function(){	
+	$('#TercoDolorosoPage').on('pageshow',function(){	
 		
 		
 			window.swipeSliderDoloroso = new Swipe(document.getElementById('sliderDoloroso'), {
@@ -1280,7 +1297,7 @@ function init(){
 		
 	});
 		
-	$('#tercoLuminosoPage').on('pageshow',function(){
+	$('#TercoLuminosoPage').on('pageshow',function(){
 		
 			window.swipeSliderLuminoso = new Swipe(document.getElementById('sliderLuminoso'), {
 				startSlide:retrieveRosaryPosition('TercoLuminoso'),
@@ -1307,7 +1324,7 @@ function init(){
 	});
 	
 	
-	$('#tercoGloriosoPage').on('pageshow',function(){	
+	$('#TercoGloriosoPage').on('pageshow',function(){	
 		
 			window.swipeSliderGlorioso = new Swipe(document.getElementById('sliderGlorioso'), {
 				startSlide:retrieveRosaryPosition('TercoGlorioso'),
@@ -1333,7 +1350,7 @@ function init(){
 	});
 		
 	
-	$('#tercoGozosoPage').live('pageshow',function(){
+	$('#TercoGozosoPage').live('pageshow',function(){
 		
 		
 	
@@ -1357,6 +1374,29 @@ function deviceReady() {
 		window.sliderGozoso.next();
 	});
 	
+	
+	$('.1stMistery').on('click',function(){			
+		setMisteryPosition(window.currentRosary,1);		
+	});
+	
+	$('.2ndMistery').on('click',function(){			
+		setMisteryPosition(window.currentRosary,2);		
+	});
+	
+	$('.3rdMistery').on('click',function(){			
+		setMisteryPosition(window.currentRosary,3);		
+	});
+	
+	$('.4thMistery').on('click',function(){			
+		setMisteryPosition(window.currentRosary,4);		
+	});
+	
+	$('.5thMistery').on('click',function(){			
+		setMisteryPosition(window.currentRosary,5);		
+	});
+	$('.LadainhaMistery').on('click',function(){			
+		setMisteryPosition(window.currentRosary,6);		
+	});
 
 	if(checkPreAuth()){
 		$.mobile.changePage( "#homePage", { transition: "slideup"} );			
@@ -1420,15 +1460,21 @@ function deviceReady() {
     }
 });
 	
-	$(".linkTercoGozoso").on('click', function(e) {
-		//e.preventDefault();
-		window.currentRosary = 'tercoGozoso';
-		$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);
-		
-		//$("#confirmRosaryPage")
-			//.data('terco', 'tercoGozosoPage')  // The important part .data() method
-			//.dialog('open');
-			//.popup('open');
+	$(".linkTercoGozoso").on('click', function(e) {		
+		window.currentRosary = 'TercoGozoso';
+		$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);				
+	});	
+	$(".linkTercoGlorioso").on('click', function(e) {		
+		window.currentRosary = 'TercoGlorioso';
+		$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);				
+	});	
+	$(".linkTercoLuminoso").on('click', function(e) {		
+		window.currentRosary = 'TercoLuminoso';
+		$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);				
+	});	
+	$(".linkTercoDoloroso").on('click', function(e) {		
+		window.currentRosary = 'TercoDoloroso';
+		$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);				
 	});	
 	
 
