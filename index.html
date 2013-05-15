@@ -130,9 +130,14 @@
 	
 	<div data-role="content" id="content">
         <p id="message"/>		
+		<ul data-role="listview" data-inset="true" id="praylist">
+			<li data-role="list-divider"  >Terço do dia:</li>        
+			<div class="tercoDoDia"></div>			
+		</ul>
         <ul data-role="listview" data-inset="true" id="praylist">
+			
             <li data-role="list-divider"  >Orações</li>            			
-			<li><a href="#" class="linkTercoGozoso">   <img src="images/pre-gozoso.jpg" > Terço Gozoso</a></li>
+			<li><a href="#" class="linkTercoGozoso">   <img src="images/pre-gozoso.jpg" >Terço Gozoso</a></li>
 			<li><a href="#" class="linkTercoDoloroso"> <img src="images/pre-doloroso.jpg" >Terço Doloroso</a></li>
 			<li><a href="#" class="linkTercoGlorioso"> <img src="images/pre-glorioso.jpg" >Terço Glorioso</a></li>
 			<li><a href="#" class="linkTercoLuminoso"> <img src="images/pre-luminoso.jpg" >Terço Luminoso</a></li>
@@ -1079,29 +1084,29 @@
 
 <div  id="confirmRosaryPage" data-role="dialog">
 		<div data-role="header">
-			<h1>Legatus Christi</h1>
+			<h1>O que deseja?</h1>
 
 		</div>
 
 		
 		<div data-role="content" >
 			
-			<h1> <div class="rosaryTitle"> Legatus Christi </div> </h1>
-			<p>O que você deseja fazer?</p>
+			
+			
 			<div style="text-align:center;">
-			<a href="page-dialogs.html" data-role="button" data-inline="true" data-theme="b" class="rosaryIniciar">Iniciar</a>    
-			<a href="page-dialogs.html" data-role="button" data-inline="true"                class="rosaryContinuar">Continuar de onde parou</a>    
+			<a href="#" data-role="button" data-inline="true" data-theme="b" class="rosaryIniciar">Iniciar</a>    
+			<a href="#" data-role="button" data-inline="true"                class="rosaryContinuar">Continuar</a>    
 			</div>
 			<p>Ir para mistério:</p>
 			<div style="text-align:center;">
-			<a href="page-dialogs.html" data-role="button" data-inline="true" class="1stMistery">1º</a>
-			<a href="page-dialogs.html" data-role="button" data-inline="true" class="2ndMistery">2º</a>
-			<a href="page-dialogs.html" data-role="button" data-inline="true" class="3rdMistery">3º</a>
-			<a href="page-dialogs.html" data-role="button" data-inline="true" class="4thMistery">4º</a>
-			<a href="page-dialogs.html" data-role="button" data-inline="true" class="5thMistery">5º</a>
+			<a href="#" data-role="button" data-inline="true" class="1stMistery">1º</a>
+			<a href="#" data-role="button" data-inline="true" class="2ndMistery">2º</a>
+			<a href="#" data-role="button" data-inline="true" class="3rdMistery">3º</a>
+			<a href="#" data-role="button" data-inline="true" class="4thMistery">4º</a>
+			<a href="#" data-role="button" data-inline="true" class="5thMistery">5º</a>
 			</div>
-			<a href="page-dialogs.html" data-role="button" class="LadainhaMistery">Ladainhas</a>
-			<a href="page-dialogs.html" data-role="button" data-rel="back" data-theme="c">Cancelar</a>    
+			<a href="#" data-role="button" class="LadainhaMistery">Ladainhas</a>
+			<a href="#" data-role="button" data-rel="back" data-theme="c">Cancelar</a>    
 		</div>
 </div>
 
@@ -1232,6 +1237,14 @@ function init(){
 	$('#ofertasPage').on('pageshow',function(){			
 		loadOffers();
 	});
+	
+	$('#prayerPage').on('pageshow',function(){	
+		$('div.tercoDoDia').html('<p>Terço do dia</p>');	
+		
+	});
+	
+	
+	
 	
 	
 	$('#confirmRosaryPage').on('pageshow',function(){					
