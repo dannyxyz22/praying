@@ -1088,7 +1088,10 @@
 			
 			<h1> <div class="rosaryTitle"> Legatus Christi </div> </h1>
 			<p>O que você deseja fazer?</p>
-			<a href="page-dialogs.html" data-role="button" data-theme="b" class="rosaryContinuar">Continuar de onde parou</a>    
+			<div style="text-align:center;">
+			<a href="page-dialogs.html" data-role="button" data-inline="true" data-theme="b" class="rosaryIniciar">Iniciar</a>    
+			<a href="page-dialogs.html" data-role="button" data-inline="true"                class="rosaryContinuar">Continuar de onde parou</a>    
+			</div>
 			<p>Ir para mistério:</p>
 			<div style="text-align:center;">
 			<a href="page-dialogs.html" data-role="button" data-inline="true" class="1stMistery">1º</a>
@@ -1206,6 +1209,9 @@ function setMisteryPosition(rosaryId,mistery){
 	if(mistery==6){
 		position+=1; //SalveRainha
 	}
+	if(mistery==0){
+		position=0;//início
+	}
 	var rosaryKey = rosaryId + 'Position';
 	localStorage.setItem(rosaryKey, position);
 }
@@ -1229,6 +1235,7 @@ function init(){
 	
 	
 	$('#confirmRosaryPage').on('pageshow',function(){					
+		$('.rosaryIniciar').attr("href", "#"+window.currentRosary+"Page");
 		$('.rosaryContinuar').attr("href", "#"+window.currentRosary+"Page");
 		$('.1stMistery').attr("href", "#"+window.currentRosary+"Page");
 		$('.2ndMistery').attr("href", "#"+window.currentRosary+"Page");
@@ -1240,6 +1247,7 @@ function init(){
 	
 	
 	$('#TercoGozosoPage').on('pageshow',function(){
+		if(typeof window.swipeSliderGozoso === 'undefined'){
 		
 			window.swipeSliderGozoso = new Swipe(document.getElementById('sliderGozoso'), {
 				startSlide:retrieveRosaryPosition('TercoGozoso'),
@@ -1262,7 +1270,10 @@ function init(){
 				}
 			
 			});
-		
+		}
+		else{
+				window.swipeSliderGozoso.slide(retrieveRosaryPosition('TercoGozoso'), 200);
+		}
 		
 		
 		
@@ -1271,34 +1282,38 @@ function init(){
 	
 	$('#TercoDolorosoPage').on('pageshow',function(){	
 		
-		
-			window.swipeSliderDoloroso = new Swipe(document.getElementById('sliderDoloroso'), {
-				startSlide:retrieveRosaryPosition('TercoDoloroso'),
-				sliderName:"TercoDoloroso",
-				callback: function(index, elem) {		
-					localStorage.setItem(this.sliderName + 'Position', index);		
-					
-					if(index==79){
-						window.swipeSliderDoloroso.slide(0,300);
-						updateCounter(this.sliderName);
-						alert("Amém");
-					}
-					
-			
-				},
+			if(typeof window.swipeSliderDoloroso === 'undefined'){
+				window.swipeSliderDoloroso = new Swipe(document.getElementById('sliderDoloroso'), {
+					startSlide:retrieveRosaryPosition('TercoDoloroso'),
+					sliderName:"TercoDoloroso",
+					callback: function(index, elem) {		
+						localStorage.setItem(this.sliderName + 'Position', index);		
+						
+						if(index==79){
+							window.swipeSliderDoloroso.slide(0,300);
+							updateCounter(this.sliderName);
+							alert("Amém");
+						}
+						
 				
-				transitionEnd: function(index, elem) {
+					},
 					
-				}
-			
-			});
-		
+					transitionEnd: function(index, elem) {
+						
+					}
+				
+				});
+			}
+			else{
+				window.swipeSliderDoloroso.slide(retrieveRosaryPosition('TercoDoloroso'), 200);
+			}
 		
 		
 	});
 		
 	$('#TercoLuminosoPage').on('pageshow',function(){
 		
+		if(typeof window.swipeSliderLuminoso === 'undefined'){
 			window.swipeSliderLuminoso = new Swipe(document.getElementById('sliderLuminoso'), {
 				startSlide:retrieveRosaryPosition('TercoLuminoso'),
 				sliderName:"TercoLuminoso",
@@ -1318,6 +1333,10 @@ function init(){
 				}
 			
 			});	
+		}
+		else{
+			window.swipeSliderLuminoso.slide(retrieveRosaryPosition('TercoLuminoso'), 200);
+		}
 		
 		
 		
@@ -1326,6 +1345,7 @@ function init(){
 	
 	$('#TercoGloriosoPage').on('pageshow',function(){	
 		
+		if(typeof window.swipeSliderGlorioso === 'undefined'){
 			window.swipeSliderGlorioso = new Swipe(document.getElementById('sliderGlorioso'), {
 				startSlide:retrieveRosaryPosition('TercoGlorioso'),
 				sliderName:"TercoGlorioso",
@@ -1345,18 +1365,13 @@ function init(){
 				}
 			
 			});
+		}
+		else{
+			window.swipeSliderGlorioso.slide(retrieveRosaryPosition('TercoGlorioso'), 200);
+		}
 		
 		
 	});
-		
-	
-	$('#TercoGozosoPage').live('pageshow',function(){
-		
-		
-	
-
-	});
-	
 	
 }
 
@@ -1372,6 +1387,11 @@ function deviceReady() {
 	
 	$(".pray-next").on("click", function (e){
 		window.sliderGozoso.next();
+	});
+	
+	
+	$('.rosaryIniciar').on('click',function(){			
+		setMisteryPosition(window.currentRosary,0);		
 	});
 	
 	
