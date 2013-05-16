@@ -1239,7 +1239,23 @@ function init(){
 	});
 	
 	$('#prayerPage').on('pageshow',function(){	
-		$('div.tercoDoDia').html('<p>Terço do dia</p>');	
+		diaDaSemana = new Date().getDay(); 
+		htmlNovo = '';
+		if(( 0 == diaDaSemana) || (3 == diaDaSemana)){
+			htmlNovo = '<li><a href="#" class="linkTercoGlorioso"> <img src="images/pre-glorioso.jpg" >Terço Glorioso</a></li>';
+		}
+		else if(  (6 == diaDaSemana) || (1== diaDaSemana) ){
+			htmlNovo = '<li><a href="#" class="linkTercoGozoso">   <img src="images/pre-gozoso.jpg" >Terço Gozoso</a></li>';
+		}
+		else if(  (5 == diaDaSemana)  ){
+			htmlNovo = '<li><a href="#" class="linkTercoDoloroso"> <img src="images/pre-doloroso.jpg" >Terço Doloroso</a></li>';
+		}
+		else if( (4 == diaDaSemana) ){
+			htmlNovo = '<li><a href="#" class="linkTercoLuminoso"> <img src="images/pre-luminoso.jpg" >Terço Luminoso</a></li>';
+		}
+		
+		
+		$('div.tercoDoDia').html(htmlNovo);	
 		
 	});
 	
