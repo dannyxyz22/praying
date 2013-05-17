@@ -130,7 +130,7 @@
 	
 	<div data-role="content" id="content">
         <p id="message"/>		
-		<ul data-role="listview" data-inset="true" id="praylist">
+		<ul data-role="listview" data-inset="true" class="daypraylist">
 			<li data-role="list-divider"  >Terço do dia:</li>        
 			<div class="tercoDoDia"></div>			
 		</ul>
@@ -1255,7 +1255,8 @@ function init(){
 		}
 		
 		
-		$('div.tercoDoDia').html(htmlNovo);	
+		$('div.tercoDoDia').html(htmlNovo);
+		$('.daypraylist').listview('refresh');
 		
 	});
 	
