@@ -130,9 +130,7 @@
 	
 	<div data-role="content" id="content">
         <p id="message"/>		
-		<ul data-role="listview" data-inset="true" class="daypraylist">
-			<li data-role="list-divider"  >Terço do dia:</li>        
-			<div class="tercoDoDia"></div>			
+		<ul data-role="listview" data-inset="true" class="daypraylist">			
 		</ul>
         <ul data-role="listview" data-inset="true" id="praylist">
 			
@@ -1240,23 +1238,50 @@ function init(){
 	
 	$('#prayerPage').on('pageshow',function(){	
 		diaDaSemana = new Date().getDay(); 
-		htmlNovo = '';
-		if(( 0 == diaDaSemana) || (3 == diaDaSemana)){
-			htmlNovo = '<li><a href="#" class="linkTercoGlorioso"> <img src="images/pre-glorioso.jpg" >Terço Glorioso</a></li>';
+		htmlNovo = '<li data-role="list-divider"  >Terço do dia</li>';
+		if(( 0 == diaDaSemana) || (3 == diaDaSemana)){		
+			htmlNovo += '<li><a href="#" class="newLinkTerco"> <img src="images/pre-glorioso.jpg" >Terço Glorioso</a></li>';
 		}
 		else if(  (6 == diaDaSemana) || (1== diaDaSemana) ){
-			htmlNovo = '<li><a href="#" class="linkTercoGozoso">   <img src="images/pre-gozoso.jpg" >Terço Gozoso</a></li>';
+			htmlNovo += '<li><a href="#" class="newLinkTerco">   <img src="images/pre-gozoso.jpg" >Terço Gozoso</a></li>';
 		}
-		else if(  (5 == diaDaSemana)  ){
-			htmlNovo = '<li><a href="#" class="linkTercoDoloroso"> <img src="images/pre-doloroso.jpg" >Terço Doloroso</a></li>';
+		else if(  (5 == diaDaSemana) || (2 == diaDaSemana)  ){
+			htmlNovo += '<li><a href="#" class="newLinkTerco"> <img src="images/pre-doloroso.jpg" >Terço Doloroso</a></li>';
+			
 		}
 		else if( (4 == diaDaSemana) ){
-			htmlNovo = '<li><a href="#" class="linkTercoLuminoso"> <img src="images/pre-luminoso.jpg" >Terço Luminoso</a></li>';
+			htmlNovo += '<li><a href="#" class="newLinkTerco"> <img src="images/pre-luminoso.jpg" >Terço Luminoso</a></li>';
 		}
 		
 		
-		$('div.tercoDoDia').html(htmlNovo);
+		$('.daypraylist').empty();			
+		$('.daypraylist').append(htmlNovo);
 		$('.daypraylist').listview('refresh');
+		
+		if(( 0 == diaDaSemana) || (3 == diaDaSemana)){		
+			$(".newLinkTerco").on('click', function(e) {		
+				window.currentRosary = 'TercoGlorioso';
+				$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);				
+			});	
+		}
+		else if(  (6 == diaDaSemana) || (1== diaDaSemana) ){
+			$(".newLinkTerco").on('click', function(e) {		
+				window.currentRosary = 'TercoGozoso';
+				$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);				
+			});	
+		}
+		else if(  (5 == diaDaSemana) || (2 == diaDaSemana)  ){
+			$(".newLinkTerco").on('click', function(e) {		
+				window.currentRosary = 'TercoDoloroso';
+				$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);				
+			});				
+		}
+		else if( (4 == diaDaSemana) ){
+			$(".newLinkTerco").on('click', function(e) {		
+				window.currentRosary = 'TercoLuminoso';
+				$.mobile.changePage('#confirmRosaryPage', 'pop', true, true);				
+			});	
+		}
 		
 	});
 	
