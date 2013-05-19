@@ -114,7 +114,7 @@
 	<div data-role="content" id="content">
         <p id="message"/>		
         <ul data-role="listview" data-inset="true" id="offerList">
-            <li data-role="list-divider"  >Ofertas</li>            			
+                    			
         </ul>
     </div>
 
@@ -348,10 +348,16 @@
 <br>
 <br>			Para que sejamos dignos das promessas de Cristo
 			</p>
+			
+			<a href="#" data-role="button" class="finalizarTerco" >Amém</a>    		
+		
 			</span>
+			
+			
+			
 			</div>
 			  
-			  <div><span>Amém</span></div>
+			  
 
 		  </div>
 		</div> <!-- /sliderGozoso -->
@@ -565,10 +571,13 @@
 <br>
 <br>			Para que sejamos dignos das promessas de Cristo
 			</p>
+			
+				<a href="#" data-role="button" class="finalizarTerco" >Amém</a>   
+			
 			</span>
 			</div>
 			  
-			  <div><span>Amém</span></div>
+			 
 
 		  </div>
 		</div> <!-- /slider -->
@@ -780,10 +789,15 @@
 <br>
 <br>			Para que sejamos dignos das promessas de Cristo
 			</p>
+			
+				<a href="#" data-role="button" class="finalizarTerco" >Amém</a>   
+			
 			</span>
+			
+			
 			</div>
 			
-			  <div><span>Amém</span></div>
+			 
 
 		  </div>
 		</div> <!-- /slider -->
@@ -990,10 +1004,13 @@
 <br>
 <br>			Para que sejamos dignos das promessas de Cristo
 			</p>
+			
+				<a href="#" data-role="button" class="finalizarTerco" >Amém</a>   
+			
 			</span>
 			</div>
 			  
-			  <div><span>Amém</span></div>
+			 
 
 		  </div>
 		</div> <!-- /slider -->
@@ -1126,6 +1143,8 @@ var existingPrayers = [];
 
 function syncServer(){
 	$.ajax({
+				beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
+				complete: function() { $.mobile.hidePageLoadingMsg() }, //Hide spinner
 				url: serverUrl + "/secure",
 				type: 'POST',
 				data: {prayers:JSON.stringify(prayers),user:JSON.stringify(user)},//PaiNosso:localStorage.getItem('PaiNosso')}, // An object with the key 'submit' and value 'true;
@@ -1224,6 +1243,7 @@ function setMisteryPosition(rosaryId,mistery){
 function init(){
 
 	$.mobile.page.prototype.options.backBtnText = "Voltar";
+	window.swipes = {};
 	/*if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
         document.addEventListener("deviceready", deviceReady, false);
     } else {
@@ -1300,6 +1320,14 @@ function init(){
 		$('.LadainhaMistery').attr("href", "#"+window.currentRosary+"Page");
 	});
 	
+	$('.finalizarTerco').on('click',function(){
+		
+		window.swipes[window.currentRosary].slide(0,300);
+		updateCounter(window.currentRosary);
+		alert("Terço finalizado!");
+		$.mobile.changePage( "#prayerPage", { transition: "slideup"} );	
+					
+	});
 	
 	$('#TercoGozosoPage').on('pageshow',function(){
 		if(typeof window.swipeSliderGozoso === 'undefined'){
@@ -1310,13 +1338,6 @@ function init(){
 				callback: function(index, elem) {
 				
 				localStorage.setItem(this.sliderName + 'Position', index);
-					
-					if(index==79){
-						window.swipeSliderGozoso.slide(0,300);
-						updateCounter(this.sliderName);
-						alert("Amém");
-					}
-					
 			
 				},
 				
@@ -1325,6 +1346,8 @@ function init(){
 				}
 			
 			});
+			
+			window.swipes["TercoGozoso"] = window.swipeSliderGozoso;
 		}
 		else{
 				window.swipeSliderGozoso.slide(retrieveRosaryPosition('TercoGozoso'), 200);
@@ -1343,14 +1366,6 @@ function init(){
 					sliderName:"TercoDoloroso",
 					callback: function(index, elem) {		
 						localStorage.setItem(this.sliderName + 'Position', index);		
-						
-						if(index==79){
-							window.swipeSliderDoloroso.slide(0,300);
-							updateCounter(this.sliderName);
-							alert("Amém");
-						}
-						
-				
 					},
 					
 					transitionEnd: function(index, elem) {
@@ -1358,6 +1373,7 @@ function init(){
 					}
 				
 				});
+				window.swipes["TercoDoloroso"] = window.swipeSliderDoloroso;
 			}
 			else{
 				window.swipeSliderDoloroso.slide(retrieveRosaryPosition('TercoDoloroso'), 200);
@@ -1374,13 +1390,6 @@ function init(){
 				sliderName:"TercoLuminoso",
 				callback: function(index, elem) {		
 					localStorage.setItem(this.sliderName + 'Position', index);				
-					if(index==79){
-						window.swipeSliderLuminoso.slide(0,300);
-						updateCounter(this.sliderName);
-						alert("Amém");
-					}
-					
-			
 				},
 				
 				transitionEnd: function(index, elem) {
@@ -1388,6 +1397,7 @@ function init(){
 				}
 			
 			});	
+			window.swipes["TercoLuminoso"] = window.swipeSliderLuminoso;
 		}
 		else{
 			window.swipeSliderLuminoso.slide(retrieveRosaryPosition('TercoLuminoso'), 200);
@@ -1420,6 +1430,7 @@ function init(){
 				}
 			
 			});
+			window.swipes["TercoGlorioso"] = window.swipeSliderGlorioso;
 		}
 		else{
 			window.swipeSliderGlorioso.slide(retrieveRosaryPosition('TercoGlorioso'), 200);
@@ -1595,14 +1606,24 @@ function loadOffers(){
 	var existemOfertas = false;
 	for (var i = 0 ; i< vSize; i++){
 		if(prayers[i].count>0){
-			$('#offerList').append('<li>' + prayers[i].name+ ' ' + prayers[i].count + '</li>');
 			existemOfertas = true;
+			break;
 		}
 		
 	}
 	if(!existemOfertas){
 			$('#offerList').html('Não existem ofertas. Reze um terço completo para encher sua cesta.');
 	}
+	else{
+		$('#offerList').empty();
+		$('#offerList').append('<li data-role="list-divider"  >Ofertas</li>');
+		for (var i = 0 ; i< vSize; i++){
+			if(prayers[i].count>0){			
+				$('#offerList').append('<li>' + prayers[i].name+ ' ' + prayers[i].count + '</li>');
+			}		
+		}
+	}
+	$('#offerList').listview('refresh');
 }
 
 function loadPrayers(){
