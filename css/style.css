@@ -9,9 +9,13 @@
 .swipe li div, .swipe div div div {
   margin:0 0px;
   padding:50px 10px;
-  background:#1db1ff;
+  background:#bf871f;
   font-weight:bold;
   color:#fff;
-  font-size:20px;
+  font-size:40px;
   text-align:center;
+}
+
+.ui-header .ui-title {
+    margin: .6em 30% .8em;
 }

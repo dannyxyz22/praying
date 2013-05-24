@@ -4,10 +4,14 @@
 	<title>Legatus Christi</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.2.0.min.css" />
 	
-	
+	<link rel="stylesheet" href="css/themes/legatus/legatus.min.css" />
 	<link rel='stylesheet' href='css/style.css' />
+	
+	
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.2.0.min.css" />
+	
+	
 	
 	
 	<script src="js/jquery.js"></script>
@@ -36,23 +40,23 @@
 /* END required styles */
 
 #sliderGozoso {
-  background:#414141;
+  background:#f2d377;
 }
 
 #sliderDoloroso {
-  background:#414141;
+  background:#f2d377;
 }
 
 #sliderLuminoso {
-  background:#414141;
+  background:#f2d377;
 }
 #sliderGlorioso {
-  background:#414141;
+  background:#f2d377;
 }
 
 .swipe-wrap > div > span {
   display:block;
-  background:#1db1ff;
+  background:#bf871f;
   font-weight:bold;
   color:#fff;
   font-size:20px;
@@ -75,10 +79,11 @@
 </head> 
 <body onload="init()"> 
 
-<div data-role="page" id="homePage">
+<div data-role="page" id="homePage" >
 
 	<div data-role="header">
-		<h1 style="text-align:left; margin-left:10px;">Legatus Christi</h1>
+		<!-- <h1 style="text-align:left; margin-left:10px;">Legatus Christi</h1> -->
+		<h1><img src="images/logo.png" /> </h1>
 		<a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Opções</a>
 	</div><!-- /header -->
 
@@ -108,11 +113,12 @@
 		<a href="#homePage" data-icon="arrow-l">Voltar...</a>
 		<h1>Ofertas</h1>
 	</div><!-- /header -->
-	<center><img src="images/offer.png" ></center>
-	<a href="#" data-icon="refresh"  class="ofertar" data-role='button'> Ofertar</a>
+	
 	
 	<div data-role="content" id="content">
         <p id="message"/>		
+		<center><img src="images/offer.png" ></center>
+	<a href="#" data-icon="refresh"  class="ofertar" data-role='button'> Ofertar</a>
         <ul data-role="listview" data-inset="true" id="offerList">
                     			
         </ul>
@@ -1052,7 +1058,7 @@
     </div>
 
     <div data-role="content">    
-
+		<p>Você poderá criar uma conta para armazenar seu progresso nas nuvens. Se já tiver criado, apenas insira o usuário e a password, por favor:</p>
         <form id="loginForm">
         <div data-role="fieldcontain" class="ui-hide-label">
             <label for="username">Usuário:</label>
@@ -1065,21 +1071,10 @@
         </div>
 
         <input type="submit" value="Login" id="loginButton">
-		<input type="submit" value="Sign up" id="signupButton">
+		<input type="submit" value="Criar conta" id="signupButton">
         </form>
         
     </div>
-
-	<div data-role="footer" data-position="fixed" data-id="footerMenu">		
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#homePage" data-icon="home" data-iconpos="notext"></a></li>
-				<li><a href="#prayerPage" data-icon="star" data-iconpos="notext"></a></li>
-				<li><a href="#" data-icon="refresh" data-iconpos="notext" class="ofertar"></a></li>
-				<li><a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="config"></a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div><!-- /footer -->
 
 </div>
 
@@ -1242,6 +1237,24 @@ function setMisteryPosition(rosaryId,mistery){
 
 function init(){
 
+	var toast=function(msg){
+		$("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h3>"+msg+"</h3></div>")
+		.css({ display: "block", 
+			opacity: 0.90, 
+			position: "fixed",
+			padding: "7px",
+			"text-align": "center",
+			width: "270px",
+			left: ($(window).width() - 284)/2,
+			top: $(window).height()/2 })
+				.appendTo( $.mobile.pageContainer ).delay( 3000 )
+			.fadeOut( 400, function(){
+		$(this).remove();
+		});
+	
+	}
+	var deslizeMessage = 'Deslize para a esquerda ou direita para rezar o terço.';
+
 	$.mobile.page.prototype.options.backBtnText = "Voltar";
 	window.swipes = {};
 	/*if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
@@ -1353,6 +1366,9 @@ function init(){
 				window.swipeSliderGozoso.slide(retrieveRosaryPosition('TercoGozoso'), 200);
 		}
 		
+	
+		toast(deslizeMessage);
+		
 		
 		
 	});
@@ -1379,7 +1395,7 @@ function init(){
 				window.swipeSliderDoloroso.slide(retrieveRosaryPosition('TercoDoloroso'), 200);
 			}
 		
-		
+		toast(deslizeMessage);
 	});
 		
 	$('#TercoLuminosoPage').on('pageshow',function(){
@@ -1403,7 +1419,7 @@ function init(){
 			window.swipeSliderLuminoso.slide(retrieveRosaryPosition('TercoLuminoso'), 200);
 		}
 		
-		
+		toast(deslizeMessage);
 		
 	});
 	
@@ -1436,7 +1452,7 @@ function init(){
 			window.swipeSliderGlorioso.slide(retrieveRosaryPosition('TercoGlorioso'), 200);
 		}
 		
-		
+		toast(deslizeMessage);
 	});
 	
 }
