@@ -83,7 +83,9 @@
 
 	<div data-role="header">
 		<!-- <h1 style="text-align:left; margin-left:10px;">Legatus Christi</h1> -->
+		<div style="text-align: center;">
 		<h1><img src="images/logo.png" /> </h1>
+		</div>
 		<a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Opções</a>
 	</div><!-- /header -->
 
@@ -97,7 +99,17 @@
 		</div>		
 		
 		<a href="#prayerPage" data-icon="star" data-role='button'>Orações</a>		
-		<a href="#ofertasPage" data-icon="star" data-role='button'>Ofertas</a>		
+		<a href="#ofertasPage" data-icon="star" data-role='button'>Ofertas</a>
+		<a href="#examePage" data-icon="star" data-role='button'>Exame</a>		
+		
+		<div>      
+			Resumo do dia:
+                <form>
+	               	<label>
+	                	<input type="checkbox" name="checkbox-0" checked="true" disabled="disabled" >Exame de consciência
+	                </label>
+            	</form>
+			</div><!--/demo-html -->
 		
 		<div class="existingPrayers">
 			
@@ -107,6 +119,23 @@
 	</div>
 
 </div>
+
+<div data-role="page" id="examePage" data-add-back-btn='true'>
+	<div data-role="header">
+		<a href="#homePage" data-icon="arrow-l">Voltar...</a>
+		<h1>Exame</h1>
+	</div><!-- /header -->
+	
+	
+	<div data-role="content" id="content">
+        <p id="message"/>		
+		Exame de consciência
+    </div>
+
+</div>
+
+
+
 
 <div data-role="page" id="ofertasPage" data-add-back-btn='true'>
 	<div data-role="header">
