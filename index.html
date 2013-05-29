@@ -98,19 +98,53 @@
 	max-width: 75%;" src="images/Jesus.png">
 		</div>		
 		
-		<a href="#prayerPage" data-icon="star" data-role='button'>Orações</a>		
-		<a href="#ofertasPage" data-icon="star" data-role='button'>Ofertas</a>
-		<a href="#examePage" data-icon="star" data-role='button'>Exame</a>		
+
 		
-		<div>      
-			Resumo do dia:
-                <form>
-	               	<label>
-	                	<input type="checkbox" name="checkbox-0" checked="true" disabled="disabled" >Exame de consciência
+		<div data-role="collapsible" data-collapsed="false" >
+			<h3>Progresso do dia</h3>
+            <form> <div data-role=controlgroup>
+					<label>
+	                	<input type="checkbox" id="id-angelus" name="checkbox-angelus" disabled />Angelus
 	                </label>
-            	</form>
-			</div><!--/demo-html -->
+	               	<label>
+	                	<input type="checkbox" id="id-visita" name="checkbox-visita" disabled />Visita ao Santo Sacramento
+	                </label>
+					<label>
+	                	<input type="checkbox" id="id-leitura" name="checkbox-leitura" disabled />Leitura espiritual
+	                </label>
+
+
+					
+					<label>
+	                	<input type="checkbox" id="id-evangelho" name="checkbox-evangelho" disabled />Leitura do Evangelho
+	                </label>
+					
+					
+					
+					<label>
+	                	<input type="checkbox" id="id-terco" name="checkbox-terco" disabled />Terço
+	                </label>
+					
+					<label>
+	                	<input type="checkbox" id="id-missa" name="checkbox-missa" disabled />Santa Missa
+	                </label>
+					
+					<label>
+	                	<input type="checkbox" id="id-exame" name="checkbox-exame" disabled />Exame de consciência
+	                </label>
+					
+					</div>
+					
+			
+            </form>
+		</div>
 		
+		
+	
+		<a href="#prayerPage"  data-role="button" data-icon="arrow-r"  data-transition="slide"  data-iconpos="right">Orações</a>
+		<a href="#ofertasPage" data-role="button" data-icon="arrow-r"  data-transition="slide"  data-iconpos="right">Ofertas</a>
+	
+			
 		<div class="existingPrayers">
 			
 		</div>

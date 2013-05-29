@@ -16,6 +16,11 @@
   text-align:center;
 }
 
+.ui-collapsible h3 .ui-btn-inner
+{
+    text-align:center;
+}
+
 .ui-header .ui-title {
     margin: .6em 30% .8em;
 }
