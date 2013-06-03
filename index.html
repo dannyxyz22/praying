@@ -4,10 +4,14 @@
 	<title>Legatus Christi</title> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.2.0.min.css" />
 	
-	
+	<link rel="stylesheet" href="css/themes/legatus/legatus.min.css" />
 	<link rel='stylesheet' href='css/style.css' />
+	
+	
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.2.0.min.css" />
+	
+	
 	
 	
 	<script src="js/jquery.js"></script>
@@ -36,23 +40,23 @@
 /* END required styles */
 
 #sliderGozoso {
-  background:#414141;
+  background:#f2d377;
 }
 
 #sliderDoloroso {
-  background:#414141;
+  background:#f2d377;
 }
 
 #sliderLuminoso {
-  background:#414141;
+  background:#f2d377;
 }
 #sliderGlorioso {
-  background:#414141;
+  background:#f2d377;
 }
 
 .swipe-wrap > div > span {
   display:block;
-  background:#1db1ff;
+  background:#bf871f;
   font-weight:bold;
   color:#fff;
   font-size:20px;
@@ -75,17 +79,13 @@
 </head> 
 <body onload="init()"> 
 
-<div data-role="page" id="homePage">
+<div data-role="page" id="homePage" >
 
 	<div data-role="header">
-<<<<<<< HEAD
 		<!-- <h1 style="text-align:left; margin-left:10px;">Legatus Christi</h1> -->
 		<div style="text-align: center;">
 		<h1><img src="images/logo.png" /> </h1>
 		</div>
-=======
-		<h1 style="text-align:left; margin-left:10px;">Legatus Christi</h1>
->>>>>>> parent of add73fc... Css and design
 		<a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Opções</a>
 	</div><!-- /header -->
 
@@ -98,10 +98,53 @@
 	max-width: 75%;" src="images/Jesus.png">
 		</div>		
 		
-		<a href="#prayerPage" data-icon="star" data-role='button'>Orações</a>		
-		<a href="#ofertasPage" data-icon="star" data-role='button'>Ofertas</a>
-		<a href="#examePage" data-icon="star" data-role='button'>Exame</a>		
+
 		
+		<div data-role="collapsible" data-collapsed="false" >
+			<h3>Progresso do dia</h3>
+            <form> <div data-role=controlgroup>
+					<label>
+	                	<input type="checkbox" id="id-angelus" name="checkbox-angelus" disabled />Angelus
+	                </label>
+	               	<label>
+	                	<input type="checkbox" id="id-visita" name="checkbox-visita" disabled />Visita ao Santo Sacramento
+	                </label>
+					<label>
+	                	<input type="checkbox" id="id-leitura" name="checkbox-leitura" disabled />Leitura espiritual
+	                </label>
+
+
+					
+					<label>
+	                	<input type="checkbox" id="id-evangelho" name="checkbox-evangelho" disabled />Leitura do Evangelho
+	                </label>
+					
+					
+					
+					<label>
+	                	<input type="checkbox" id="id-terco" name="checkbox-terco" disabled />Terço
+	                </label>
+					
+					<label>
+	                	<input type="checkbox" id="id-missa" name="checkbox-missa" disabled />Santa Missa
+	                </label>
+					
+					<label>
+	                	<input type="checkbox" id="id-exame" name="checkbox-exame" disabled />Exame de consciência
+	                </label>
+					
+					</div>
+					
+			
+            </form>
+		</div>
+		
+		
+	
+		<a href="#prayerPage"  data-role="button" data-icon="arrow-r"  data-transition="slide"  data-iconpos="right">Orações</a>
+		<a href="#ofertasPage" data-role="button" data-icon="arrow-r"  data-transition="slide"  data-iconpos="right">Ofertas</a>
+	
+			
 		<div class="existingPrayers">
 			
 		</div>
@@ -133,11 +176,12 @@
 		<a href="#homePage" data-icon="arrow-l">Voltar...</a>
 		<h1>Ofertas</h1>
 	</div><!-- /header -->
-	<center><img src="images/offer.png" ></center>
-	<a href="#" data-icon="refresh"  class="ofertar" data-role='button'> Ofertar</a>
+	
 	
 	<div data-role="content" id="content">
         <p id="message"/>		
+		<center><img src="images/offer.png" ></center>
+	<a href="#" data-icon="refresh"  class="ofertar" data-role='button'> Ofertar</a>
         <ul data-role="listview" data-inset="true" id="offerList">
                     			
         </ul>
@@ -190,7 +234,7 @@
 		<div class='swipe-wrap'>
 		
 			<div><span> <p>Sinal da Cruz</p><img src="images/cross.jpg" style="max-width: 100%"/></span></div>
-			<div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/> </span> </div>			
+			<div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/></div>			
 			
 			  <div><span>Pai Nosso</span></div>
 			  <div><span>Ave Maria 1</span></div>
@@ -393,7 +437,7 @@
   </div> <!-- /content -->
 
 
-</div> <!-- /content -->
+</div>
 
 <div data-role="page" id="TercoDolorosoPage" style='background:#414141'>
 	<div data-role="header">
@@ -413,7 +457,7 @@
 		
 			<div><span> <p>Sinal da Cruz</p><img src="images/cross.jpg" style="max-width: 100%"/></span></div>					
 			
-			<div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/> </span> </div>
+			<div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/></div>
 			
 			  <div><span>Pai Nosso</span></div>
 			  <div><span>Ave Maria 1</span></div>
@@ -604,7 +648,7 @@
 			  
 			 
 
-		  </div> <!-- /swipe wrap -->
+		  </div>
 		</div> <!-- /slider -->
 	</div> <!-- /gozosos -->
     
@@ -631,7 +675,7 @@
 		<div class='swipe-wrap'>
 		
 			<div><span> <p>Sinal da Cruz</p><img src="images/cross.jpg" style="max-width: 100%"/></span></div>
-			<div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/> </span> </div>
+			<div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/></div>
 			
 			  <div><span>Pai Nosso</span></div>
 			  <div><span>Ave Maria 1</span></div>
@@ -846,7 +890,7 @@
 		<div class='swipe-wrap'>
 		
 			<div><span> <p>Sinal da Cruz</p><img src="images/cross.jpg" style="max-width: 100%"/></span></div>
-			<div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/> </span> </div>
+			<div><span> <p>Creio</p> <img src="images/creio.jpg" style="max-width: 100%"/></div>
 			
 			  <div><span>Pai Nosso</span></div>
 			  <div><span>Ave Maria 1</span></div>
@@ -1077,7 +1121,7 @@
     </div>
 
     <div data-role="content">    
-
+		<p>Você poderá criar uma conta para armazenar seu progresso nas nuvens. Se já tiver criado, apenas insira o usuário e a password, por favor:</p>
         <form id="loginForm">
         <div data-role="fieldcontain" class="ui-hide-label">
             <label for="username">Usuário:</label>
@@ -1090,21 +1134,10 @@
         </div>
 
         <input type="submit" value="Login" id="loginButton">
-		<input type="submit" value="Sign up" id="signupButton">
+		<input type="submit" value="Criar conta" id="signupButton">
         </form>
         
     </div>
-
-	<div data-role="footer" data-position="fixed" data-id="footerMenu">		
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#homePage" data-icon="home" data-iconpos="notext"></a></li>
-				<li><a href="#prayerPage" data-icon="star" data-iconpos="notext"></a></li>
-				<li><a href="#" data-icon="refresh" data-iconpos="notext" class="ofertar"></a></li>
-				<li><a href="#settingsPage" data-icon="gear" data-iconpos="notext" class="config"></a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div><!-- /footer -->
 
 </div>
 
@@ -1156,9 +1189,6 @@
 
 
 <script type="text/javascript">
-
-
-
 var prayers = [//{id:"PaiNosso",name:"Pai Nosso"},{id:"AveMaria",name:"Ave Maria"},{id:"SantoAnjo",name:"Santo Anjo"},
 {id:"TercoGozoso",name:"Terço Gozoso"},
 
@@ -1269,6 +1299,24 @@ function setMisteryPosition(rosaryId,mistery){
 
 
 function init(){
+
+	var toast=function(msg){
+		$("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h3>"+msg+"</h3></div>")
+		.css({ display: "block", 
+			opacity: 0.90, 
+			position: "fixed",
+			padding: "7px",
+			"text-align": "center",
+			width: "270px",
+			left: ($(window).width() - 284)/2,
+			top: $(window).height()/2 })
+				.appendTo( $.mobile.pageContainer ).delay( 3000 )
+			.fadeOut( 400, function(){
+		$(this).remove();
+		});
+	
+	}
+	var deslizeMessage = 'Deslize para a esquerda ou direita para rezar o terço.';
 
 	$.mobile.page.prototype.options.backBtnText = "Voltar";
 	window.swipes = {};
@@ -1381,6 +1429,9 @@ function init(){
 				window.swipeSliderGozoso.slide(retrieveRosaryPosition('TercoGozoso'), 200);
 		}
 		
+	
+		toast(deslizeMessage);
+		
 		
 		
 	});
@@ -1407,7 +1458,7 @@ function init(){
 				window.swipeSliderDoloroso.slide(retrieveRosaryPosition('TercoDoloroso'), 200);
 			}
 		
-		
+		toast(deslizeMessage);
 	});
 		
 	$('#TercoLuminosoPage').on('pageshow',function(){
@@ -1431,7 +1482,7 @@ function init(){
 			window.swipeSliderLuminoso.slide(retrieveRosaryPosition('TercoLuminoso'), 200);
 		}
 		
-		
+		toast(deslizeMessage);
 		
 	});
 	
@@ -1464,7 +1515,7 @@ function init(){
 			window.swipeSliderGlorioso.slide(retrieveRosaryPosition('TercoGlorioso'), 200);
 		}
 		
-		
+		toast(deslizeMessage);
 	});
 	
 }
@@ -1525,7 +1576,7 @@ function deviceReady() {
 	
 	
 	$("#loginButton").on("click",function(e){
-		//$("#loginButton",this).attr("","disabled");	
+		//$("#loginButton",this).attr("disabled","disabled");	
 		user.userId = $("#username").val();
 		user.hashPassword = $("#password").val();
 		if(user.id != '' && password.id != '') {
