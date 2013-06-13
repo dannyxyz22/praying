@@ -15,6 +15,24 @@
 	
 	
 	<script src="js/jquery.js"></script>
+	
+	<script type="text/javascript">
+		$(document).bind("mobileinit", function(){		
+			$(document).on('pageshow','#homePage',function(){					
+				$("input[type='checkbox']").each( function() {
+					var checkId = $(this).attr('id');
+					var dia = new Date().setHours(0,0,0,0); 
+					var valueLocalStorage = localStorage.getItem(checkId);
+					if((valueLocalStorage!=null) && (dia==valueLocalStorage)){
+						$(this).attr("checked",true).checkboxradio("refresh");	
+					}
+				});
+				
+			});			
+		});
+	</script>
+	
+	
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
 	<script src="swipe.js"></script>
 
@@ -104,33 +122,33 @@
 			<h3>Progresso do dia</h3>
             <form> <div data-role=controlgroup>
 					<label>
-	                	<input type="checkbox" id="id-angelus" name="checkbox-angelus" disabled />Angelus
+	                	<input type="checkbox" id="id-angelus" name="checkbox-angelus" />Angelus
 	                </label>
 	               	<label>
-	                	<input type="checkbox" id="id-visita" name="checkbox-visita" disabled />Visita ao Santo Sacramento
+	                	<input type="checkbox" id="id-visita" name="checkbox-visita"  />Visita ao Santo Sacramento
 	                </label>
 					<label>
-	                	<input type="checkbox" id="id-leitura" name="checkbox-leitura" disabled />Leitura espiritual
+	                	<input type="checkbox" id="id-leitura" name="checkbox-leitura"  />Leitura espiritual
 	                </label>
 
 
 					
 					<label>
-	                	<input type="checkbox" id="id-evangelho" name="checkbox-evangelho" disabled />Leitura do Evangelho
+	                	<input type="checkbox" id="id-evangelho" name="checkbox-evangelho"  />Leitura do Evangelho
 	                </label>
 					
 					
 					
 					<label>
-	                	<input type="checkbox" id="id-terco" name="checkbox-terco" disabled />Terço
+	                	<input type="checkbox" id="id-terco" name="checkbox-terco"  />Terço
 	                </label>
 					
 					<label>
-	                	<input type="checkbox" id="id-missa" name="checkbox-missa" disabled />Santa Missa
+	                	<input type="checkbox" id="id-missa" name="checkbox-missa"  />Santa Missa
 	                </label>
 					
 					<label>
-	                	<input type="checkbox" id="id-exame" name="checkbox-exame" disabled />Exame de consciência
+	                	<input type="checkbox" id="id-exame" name="checkbox-exame"  />Exame de consciência
 	                </label>
 					
 					</div>
@@ -1365,6 +1383,21 @@ function init(){
 	deviceReady();
 	
 	
+	//$('#id-missa').bind( "change", function(event, ui) {
+	$("input[type='checkbox']").bind( "change", function(event, ui) {
+		var checkId = $(this).attr('id');
+		var dia = new Date().setHours(0,0,0,0); 
+		if($(this).is(":checked")){		
+			localStorage.setItem(checkId,dia);			
+		}		
+		else{
+			localStorage.setItem(checkId,null);		
+		}
+	});
+	
+	
+
+	
 	$('#ofertasPage').on('pageshow',function(){			
 		loadOffers();
 	});
@@ -1530,15 +1563,8 @@ function init(){
 			window.swipeSliderGlorioso = new Swipe(document.getElementById('sliderGlorioso'), {
 				startSlide:retrieveRosaryPosition('TercoGlorioso'),
 				sliderName:"TercoGlorioso",
-				callback: function(index, elem) {				
+				callback: function(index, elem) {		
 					localStorage.setItem(this.sliderName + 'Position', index);				
-					if(index==79){
-						window.swipeSliderGlorioso.slide(0,300);
-						updateCounter(this.sliderName);
-						alert("Amém");
-					}
-					
-			
 				},
 				
 				transitionEnd: function(index, elem) {
