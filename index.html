@@ -16,6 +16,8 @@
 	
 	<script src="js/jquery.js"></script>
 	
+	
+	
 	<script type="text/javascript">
 		$(document).bind("mobileinit", function(){		
 			$(document).on('pageshow','#homePage',function(){					
@@ -4314,6 +4316,10 @@ function setMisteryPosition(rosaryId,mistery){
 
 function init(){
 
+	var windowWidth = window.screen.width < window.outerWidth ?
+                  window.screen.width : window.outerWidth;
+	var isMobile = windowWidth < 500;
+	
 	var toast=function(msg,msgDelay){
 		$("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h3>"+msg+"</h3></div>")
 		.css({ display: "block", 
@@ -4331,7 +4337,10 @@ function init(){
 	
 	}
 	var deslizeMessage = 'Deslize para a esquerda ou direita para rezar o terço. Mais informações ao deslizar para baixo.';
-
+	if(!isMobile){
+		deslizeMessage = 'Use as teclas esquerda ou direita para rezar o terço. Mais informações ao deslizar para baixo.';
+	}
+	
 	$.mobile.page.prototype.options.backBtnText = "Voltar";
 	window.swipes = {};
 	/*if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
@@ -4339,6 +4348,21 @@ function init(){
     } else {
         deviceReady();
     }*/
+	
+
+	
+	
+	$(document).keyup(function(e) {
+			if(e.which == 37){ //left
+				window.swipes[window.currentRosary].prev();	
+			}
+			else if( e.which == 39){ //right
+				window.swipes[window.currentRosary].next();	
+			}
+		}
+	);
+	
+	
 	deviceReady();
 	
 	
