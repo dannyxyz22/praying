@@ -4285,7 +4285,12 @@ var prayers = [//{id:"PaiNosso",name:"Pai Nosso"},{id:"AveMaria",name:"Ave Maria
 
 {id:"TercoDoloroso",name:"Terço Doloroso"},{id:"TercoGlorioso",name:"Terço Glorioso"},
 {id:"TercoLuminoso",name:"Terço Luminoso"},
-{id:"Angelus",name:"Angelus"}
+{id:"Angelus",name:"Angelus"},
+{id:"taskid-visita",name:"Visita"},
+{id:"taskid-leitura",name:"Leitura espiritual"},
+{id:"taskid-evangelho",name:"Leitura Evangelho"},
+{id:"taskid-missa",name:"Santa Missa"},
+{id:"taskid-exame",name:"Exame de consciência"}
 ];
 var prayedInstance = [];
 var user = {user:"",userId:"",pass:""};
@@ -4434,9 +4439,11 @@ function init(){
 		var dia = new Date().setHours(0,0,0,0); 
 		if($(this).is(":checked")){		
 			localStorage.setItem(checkId,dia);			
+			updateCounter('task' + checkId);
 		}		
 		else{
 			localStorage.setItem(checkId,null);		
+			decreaseCounter('task' + checkId);
 		}
 	});
 	
@@ -4818,7 +4825,7 @@ function loadOffers(){
 	var vSize = prayers.length;
 	var existemOfertas = false;
 	for (var i = 0 ; i< vSize; i++){
-		if(prayers[i].count>0){
+		if(prayers[i].count!=0){
 			existemOfertas = true;
 			break;
 		}
@@ -4831,7 +4838,7 @@ function loadOffers(){
 		$('#offerList').empty();
 		$('#offerList').append('<li data-role="list-divider"  >Ofertas</li>');
 		for (var i = 0 ; i< vSize; i++){
-			if(prayers[i].count>0){			
+			if(prayers[i].count!=0){			
 				$('#offerList').append('<li>' + prayers[i].name+ ' ' + prayers[i].count + '</li>');
 			}		
 		}
@@ -4862,14 +4869,33 @@ function loadPrayers(){
 
 }
 function updateCounter(element){
+	count = 1;
 	if(localStorage.getItem(element)==null){
-		localStorage.setItem(element, 1);
+		if(count >= 0){
+			localStorage.setItem(element, count);
+		}
 	}
 	else {
 		atual = parseInt(localStorage.getItem(element));
-		localStorage.setItem(element, atual+1);
+		localStorage.setItem(element, atual+count);
 	}	
 	uploadCounter();
+	
+}
+
+function decreaseCounter(element,count){
+	count = -1;
+	if(localStorage.getItem(element)==null){
+		if(count >= 0){
+			localStorage.setItem(element, count);
+		}
+	}
+	else {
+		atual = parseInt(localStorage.getItem(element));
+		localStorage.setItem(element, atual+count);
+	}	
+	uploadCounter();
+	
 }
 </script>
 
