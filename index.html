@@ -4770,7 +4770,9 @@ function deviceReady() {
 }
 
 function loadUserData(){
-	existingPrayers = JSON.parse(localStorage.getItem('existingPrayers'));
+	if(localStorage.getItem('existingPrayers')!=null){
+		existingPrayers = JSON.parse(localStorage.getItem('existingPrayers'));
+	}
 	if(existingPrayers != null){
 		prayerSize = existingPrayers.length;
 		
