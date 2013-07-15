@@ -19,6 +19,25 @@
 	
 	
 	<script type="text/javascript">
+	
+		var toast=function(msg,msgDelay){
+		$("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h3>"+msg+"</h3></div>")
+		.css({ display: "block", 
+			opacity: 0.90, 
+			position: "fixed",
+			padding: "7px",
+			"text-align": "center",
+			width: "270px",
+			left: ($(window).width() - 284)/2,
+			top: $(window).height()/2 })
+				.appendTo( $.mobile.pageContainer ).delay( msgDelay )
+			.fadeOut( 700, function(){
+		$(this).remove();
+		});
+	
+	}
+
+	
 		$(document).bind("mobileinit", function(){		
 			$(document).on('pageshow','#homePage',function(){					
 				$("input[type='checkbox']").each( function() {
@@ -161,17 +180,19 @@
 		
 		<div data-role="collapsible" data-collapsed="true" >
 		<h3>Tesouros no céu</h3>
-<div class="existingPrayers">
-			
-		</div>
-- Nível (1,2,3 e barra de progresso até próximo nível)<br>
--- cada oração e seu número de vezes = pontos<br>
+		<h2> <div class="currentLevel"></div></h2>
+		<div class="existingPrayers">
+				
+		</div>	
+	
+		
+
+
 		</div>
 	
 		<a href="#prayerPage"  data-role="button" data-icon="arrow-r"  data-transition="slide"  data-iconpos="right">Orações</a>
 		<a href="#ofertasPage" data-role="button" data-icon="arrow-r"  data-transition="slide"  data-iconpos="right">Ofertas</a>
 	
-			
 		
 		
 		
@@ -4297,9 +4318,10 @@ function syncServer(){
 						});
 						
 						uploadCounter();						
-						alert("Oferta enviada");		
+						toast("Oferta enviada", 2000);
 						if( json.existingPrayers !=null){
-							existingPrayers = json.existingPrayers;
+							localStorage.setItem('existingPrayers',JSON.stringify(json.existingPrayers));
+							
 							loadUserData();
 						}
 						$.mobile.changePage( "#homePage", { transition: "slideup"} );			
@@ -4376,22 +4398,6 @@ function init(){
                   window.screen.width : window.outerWidth;
 	var isMobile = windowWidth < 500;
 	
-	var toast=function(msg,msgDelay){
-		$("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h3>"+msg+"</h3></div>")
-		.css({ display: "block", 
-			opacity: 0.90, 
-			position: "fixed",
-			padding: "7px",
-			"text-align": "center",
-			width: "270px",
-			left: ($(window).width() - 284)/2,
-			top: $(window).height()/2 })
-				.appendTo( $.mobile.pageContainer ).delay( msgDelay )
-			.fadeOut( 700, function(){
-		$(this).remove();
-		});
-	
-	}
 	var deslizeMessage = 'Deslize para a esquerda ou direita para rezar o terço. Mais informações ao deslizar para baixo.';
 	if(!isMobile){
 		deslizeMessage = 'Use as teclas esquerda ou direita para rezar o terço. Mais informações ao deslizar para baixo.';
@@ -4757,14 +4763,31 @@ function deviceReady() {
 }
 
 function loadUserData(){
-
-	prayerSize = existingPrayers.length;
-	prayerHtml = '';
-	for (var i = 0 ; i< prayerSize; i++){
-		thisPrayer = existingPrayers[i];
-		prayerHtml += thisPrayer.name + ' ' + thisPrayer.count + '<br></br>';
+	existingPrayers = JSON.parse(localStorage.getItem('existingPrayers'));
+	if(existingPrayers != null){
+		prayerSize = existingPrayers.length;
+		
+		prayerHtmlList = '<ul data-role="listview" data-inset="true" class="existingPrayersList">';
+		prayerHtmlList += '</ul>';
+		prayerHtml = '';
+		totalPoints = 0;
+		for (var i = 0 ; i< prayerSize; i++){
+			thisPrayer = existingPrayers[i];
+			prayerPoints = 10;
+			totalPrayerPoints = thisPrayer.count * prayerPoints;
+			totalPoints+= totalPrayerPoints;
+			prayerHtml += '<li>' + thisPrayer.name + '<p class="ui-li-aside">' + thisPrayer.count + ' x ' + prayerPoints + 
+			'<span class="ui-li-count">' + totalPrayerPoints + '</span></li>';
+		}
+		
+		$('div.existingPrayers').html(prayerHtmlList);
+		$('.existingPrayersList').empty();
+		$('.existingPrayersList').append(prayerHtml);
+		$('.existingPrayersList').listview().listview('refresh');
+		
+		nivel = 1;
+		$('.currentLevel').html('Nível ' + nivel + ': ' + totalPoints);
 	}
-	$('div.existingPrayers').html(prayerHtml);
 
 }
 
