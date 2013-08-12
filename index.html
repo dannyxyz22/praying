@@ -10,7 +10,7 @@
 	
 	
 	<link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.2.0.min.css" />
-	
+	<link rel="stylesheet" type="text/css" href="css/tolito-1.0.5.min.css" />
 	
 	
 	
@@ -36,10 +36,10 @@
 		});
 	
 	}
-
 	
-		$(document).bind("mobileinit", function(){		
+	$(document).bind("mobileinit", function(){		
 			$(document).on('pageshow','#homePage',function(){					
+			
 				$("input[type='checkbox']").each( function() {
 					var checkId = $(this).attr('id');
 					var dia = new Date().setHours(0,0,0,0); 
@@ -49,6 +49,8 @@
 					}
 				});
 				
+	
+	
 			});			
 		});
 	</script>
@@ -56,6 +58,8 @@
 	
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
 	<script src="swipe.js"></script>
+	<script type="text/javascript" src="js/tolito-1.0.5.js"></script>
+
 
 <style>
 	
@@ -136,7 +140,21 @@
 	margin: 1em auto 0; 
 	max-width: 75%;" src="images/Jesus.png" />
 		</div>		
-		
+	<table style="width: 100%; border: 0;" border=2>
+    <colgroup>
+       <col span="1" style="width: 25%; background-color:#D69A8D;">
+       <col span="1" style="width: 25%; background-color:#D67C69;">
+       <col span="1" style="width: 25%; background-color:#9C3E2B;">
+	   <col span="1" style="width: 25%; background-color:#613D35;">
+    </colgroup>
+    <tr>
+    		<th>Iniciante</th>
+    		<th>Intermediário</th>
+    		<th>Avançado</th>
+			<th>Expert</th>
+    	</tr>
+</table>
+		<div id="progressbar"></div>
 
 		
 		<div data-role="collapsible" data-collapsed="false" >
@@ -4431,7 +4449,7 @@ function init(){
 	
 	
 	deviceReady();
-	
+
 	
 	//$('#id-missa').bind( "change", function(event, ui) {
 	$("input[type='checkbox']").bind( "change", function(event, ui) {
@@ -4796,6 +4814,23 @@ function loadUserData(){
 		
 		nivel = 1;
 		$('.currentLevel').html('Nível ' + nivel + ': ' + totalPoints);
+		
+		var pBar = TolitoProgressBar('progressbar');
+	pBar
+    .setOuterTheme('b')
+    .setInnerTheme('e')
+    .isMini(false)	
+    .setMax(100)
+    .setStartFrom(0)
+    .setInterval(50)
+    .showCounter(false)
+    .logOptions()
+    .build();
+	maxPoints = 10000;
+	pBarPoints = 100.0*totalPoints/(maxPoints+0.0);
+	if(pBarPoints > 100) pBarPoints = 100;
+	pBar
+    .runTo(pBarPoints);
 	}
 
 }
